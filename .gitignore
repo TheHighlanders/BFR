@@ -14,8 +14,6 @@ dist
 build
 /BFRRobotCode/bin
 /BFRRobotCode/.project
-/BFRRobotCode/build.properties
-/BFRRobotCode/build.xml
 /BFRRobotCode/sysProps.xml
 jars
 org.eclipse.debug.core/.launches
