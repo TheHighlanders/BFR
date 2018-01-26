@@ -13,7 +13,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6201.robot.Robot;
 
 /**
- * An example command.  You can replace me with your own command.
+ * 
+ * ArcadeDriveCmd interfaces between the Drive Train subsystem and
+ * Operator Interface to provide smooth, intuitive joystick control
+ * with fine control at slower speeds, while still being able to
+ * reach full speed. A slider can be used to adjust the sensitivity
+ * of the joystick.
+ * 
+ * @author Baxter Ellard
+ * @author David Matthews
+ * 
  */
 public class ArcadeDriveCmd extends Command {
 	
