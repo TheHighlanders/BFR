@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
-import org.usfirst.frc.team6201.robot.commands.ArcadeDriveCmd;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -55,7 +54,8 @@ public class DriveTrain extends Subsystem {
 	
 	public void initDefaultCommand() {
 
-		setDefaultCommand(new ArcadeDriveCmd());
+		// Not Implemented
+		//setDefaultCommand(new ArcadeDriveCmd());
 	
 	}
 	
