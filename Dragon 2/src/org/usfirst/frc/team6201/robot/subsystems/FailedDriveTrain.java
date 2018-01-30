@@ -12,31 +12,34 @@ import org.usfirst.frc.team6201.robot.commands.ArcadeDriveCmd;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
-public class DriveTrain extends Subsystem {
-
-	private TalonSRX left1 = new TalonSRX(0);
-	private TalonSRX left2 = new TalonSRX(1);
-	private TalonSRX right1 = new TalonSRX(2);
-	private TalonSRX right2 = new TalonSRX(3);
+public class FailedDriveTrain extends Subsystem {
+	
+	private WPI_TalonSRX left1 = new WPI_TalonSRX(1);
+	private WPI_TalonSRX left2 = new WPI_TalonSRX(2);
+	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
+	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
 	
 	public static int forwardOrReverse = -1;
 	
 	private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
-	public DriveTrain() {
+	public FailedDriveTrain() {
 		
-		left1 = new TalonSRX(RobotMap.LEFT_DRIVE1);
-		left2 = new TalonSRX(RobotMap.LEFT_DRIVE2);
-		right1 = new TalonSRX(RobotMap.RIGHT_DRIVE1);
-		right2 = new TalonSRX(RobotMap.RIGHT_DRIVE2);
+		DriverStation.reportWarning("", false);
+		
+		left1 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE1);
+		left2 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE2);
+		right1 = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE1);
+		right2 = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE2);
 		
 		left1.setInverted(true);
 		left2.setInverted(true);
@@ -55,26 +58,29 @@ public class DriveTrain extends Subsystem {
 	
 	public void initDefaultCommand() {
 
-		// Not Implemented
 		setDefaultCommand(new ArcadeDriveCmd());
 	
 	}
 	
 	public void driveLR(double leftPower,double rightPower) {
 		
+		DriverStation.reportWarning("driveLR Reached.", false);
+		DriverStation.reportWarning("Left Power: " + leftPower, false);
+		DriverStation.reportWarning("Right Power: " + rightPower, false);
+		
 		if(forwardOrReverse == 1) {
 			
-			left1.set(ControlMode.Velocity, leftPower);
-			left2.set(ControlMode.Velocity, leftPower);
-			right1.set(ControlMode.Velocity, rightPower);
-			right2.set(ControlMode.Velocity, rightPower);
+			left1.set(ControlMode.PercentOutput, leftPower);
+			left2.set(ControlMode.PercentOutput, leftPower);
+			right1.set(ControlMode.PercentOutput, rightPower);
+			right2.set(ControlMode.PercentOutput, rightPower);
 			
 		} else {
 			
-			left1.set(ControlMode.Velocity, -leftPower);
-			left2.set(ControlMode.Velocity, -leftPower);
-			right1.set(ControlMode.Velocity, -rightPower);
-			right2.set(ControlMode.Velocity, -rightPower);
+			left1.set(ControlMode.PercentOutput, -leftPower);
+			left2.set(ControlMode.PercentOutput, -leftPower);
+			right1.set(ControlMode.PercentOutput, -rightPower);
+			right2.set(ControlMode.PercentOutput, -rightPower);
 			
 		}
 		
@@ -113,7 +119,7 @@ public class DriveTrain extends Subsystem {
 		
 	}
 	
-	public void turboBoostDisbale() {
+	public void turboBoostDisable() {
 		
 		left1.configOpenloopRamp(1/3, 0);
 		left2.configOpenloopRamp(1/3, 0);
