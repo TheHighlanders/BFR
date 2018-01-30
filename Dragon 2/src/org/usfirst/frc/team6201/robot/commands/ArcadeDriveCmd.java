@@ -26,6 +26,8 @@ import org.usfirst.frc.team6201.robot.Robot;
  */
 public class ArcadeDriveCmd extends Command {
 	
+	private static double powerLeft = 0;
+	private static double powerRight = 0;
 	private double tanTurn;
 	private double tanPower;
 	
@@ -80,9 +82,14 @@ public class ArcadeDriveCmd extends Command {
 		
 		processedTurn = (1 - Math.abs(processedPower)) * tanTurn;
 		
-		Robot.dt.driveLR(-(processedPower - processedTurn), -(processedPower + processedTurn));
+		powerLeft = -(processedPower - processedTurn);
+		powerRight = -(processedPower + processedTurn);
+		//Robot.dt.driveLR(-(processedPower - processedTurn), -(processedPower + processedTurn));
 		
 	}
+	
+	public static double leftTalons = powerLeft;
+	public static double rightTalons = powerRight;
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
