@@ -4,4 +4,5 @@ org.eclipse.debug.core/.launches
 *.metadata
 *.recommenders
 dist
+build
 /bin/
