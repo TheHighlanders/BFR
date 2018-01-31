@@ -8,12 +8,10 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import org.usfirst.frc.team6201.robot.subsystems.UltrasonicSensor;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -27,6 +25,8 @@ public class Robot extends IterativeRobot {
 	
 	public static final DriveTrain dt = new DriveTrain();
 	
+	public static final UltrasonicSensor us = new UltrasonicSensor();
+	
 	public static OI oi;
 	
 	/**
@@ -35,20 +35,7 @@ public class Robot extends IterativeRobot {
 	 * 3 = front left
 	 * 4 = rear right
 	 */
-/*
-	WPI_TalonSRX frontLeft = new WPI_TalonSRX(1);
-	WPI_TalonSRX frontRight = new WPI_TalonSRX(2);
 	
-	WPI_TalonSRX left2 = new WPI_TalonSRX(3);
-	WPI_TalonSRX right2 = new WPI_TalonSRX(4);
-	
-	DifferentialDrive drive = new DifferentialDrive(frontLeft, frontRight);
-	
-	Joystick joystick = new 
-	
-	
-	
-	*/
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -94,11 +81,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
-		//DriverStation.reportWarning("Joystick X: " + oi.getXAxisOfArcade(), false);
-		//DriverStation.reportWarning("Joystick Y: " + oi.getYAxisOfArcade(), false);
-		
-		Robot.dt.driveLR(0, 0);
+				
+	//	Robot.dt.driveLR(0, 0);
 		
 	}
 

@@ -28,4 +28,8 @@ public class RobotMap {
 	public static final int LOGITECH_ROTATE_AXIS = 2;
 	public static final int LOGITECH_SLIDER_AXIS = 3;
 	
+	// Sensors
+	public static final int ULTRASONIC = 0;
+	
+	
 }

@@ -66,18 +66,18 @@ public class DriveTrain extends Subsystem {
     	
     }
 	
-    public void driveLR(double leftPower, double rightPower) {
+    public void driveLR() {
     	
     	double joystickForward = joystick.getY();
-    	double joystickTurn = 1.0 * joystick.getY();
+    	double joystickTurn = 1.0 * joystick.getZ();
     	double joystickSlider = 0.5 * (1 + (-1 * Robot.oi.getSliderAxisOfArcade()));
-/**    	
+    	
     	tanPower = scaledValTan(joystickForward * joystickSlider, TANDOMAIN_X);
     	tanTurn = scaledValTan(joystickTurn * joystickSlider, TANDOMAIN_Y);
     	
     	processedPower = tanPower;
     	processedTurn = (1 - Math.abs(processedPower)) * tanTurn;
-**/    	
+    	    	
     	
     	if(Math.abs(joystickForward) < turnSens) {
     		
@@ -92,11 +92,8 @@ public class DriveTrain extends Subsystem {
     	}    	
 
     	
-//    	joystickForward = -(processedPower - processedTurn);
-//   	joystickTurn = -(processedPower + processedTurn);
-
-    	joystickForward = joystickForward * joystickSlider;
-    	joystickTurn = joystickTurn * joystickSlider;
+    	joystickForward = -(processedPower - processedTurn);
+    	joystickTurn = -(processedPower + processedTurn);
     	
     	DriverStation.reportWarning("Left Power: " + joystickForward, false);
     	DriverStation.reportWarning("Right Power: " + joystickTurn, false);
@@ -113,7 +110,7 @@ public class DriveTrain extends Subsystem {
     
     public void stop() {
     	
-    	this.driveLR(0, 0);
+    	//this.driveLR(0, 0);
     	
     }
     
