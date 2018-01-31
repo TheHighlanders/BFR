@@ -1,0 +1,12 @@
+jars
+org.eclipse.debug.core/.launches
+*.class
+*.classpath
+*.metadata
+*.recommenders
+dist
+build
+/bin/
+*.project
+*.properties
+*.xml
