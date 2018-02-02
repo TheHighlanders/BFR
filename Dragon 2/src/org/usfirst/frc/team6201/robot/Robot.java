@@ -10,7 +10,6 @@ package org.usfirst.frc.team6201.robot;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
-import org.usfirst.frc.team6201.robot.subsystems.OldDriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -29,10 +28,8 @@ public class Robot extends IterativeRobot {
 	 * Creates a DriveTrain subsystem object which enables moving the robot
 	 * around.
 	 */
-	//public static final DriveTrain dt = new DriveTrain();
-	
-	public static final OldDriveTrain odt = new OldDriveTrain();
-	
+	public static final DriveTrain dt = new DriveTrain();
+		
 	/**
 	 * Creates a GripperIntake subsystem object which enables the automatic
 	 * start and stop of gripper motors depending on a target's distance
@@ -61,7 +58,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 
 		oi = new OI();
-		//dt.calibrateGyro();
+		dt.calibrateGyro();
 		
 		//SmartDashboard.putNumber("TurboSpeed", 0.95);
 		DriverStation.reportWarning("Robot Initiated", false);
@@ -101,9 +98,7 @@ public class Robot extends IterativeRobot {
 		
 		Scheduler.getInstance().run();
 		
- 	//	Robot.dt.driveLR();
-	//	Robot.odt.driveLR(0, 0);
-		//gi.startWheels();
+ 		//gi.startWheels();
 		
 	}
 

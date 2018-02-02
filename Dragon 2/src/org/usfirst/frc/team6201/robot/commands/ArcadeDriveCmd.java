@@ -2,7 +2,6 @@ package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -27,7 +26,7 @@ public class ArcadeDriveCmd extends Command {
 	
     public ArcadeDriveCmd() {
         
-    	requires(Robot.odt);
+    	requires(Robot.dt);
     	
     }
 
@@ -47,7 +46,7 @@ public class ArcadeDriveCmd extends Command {
     	
     	processedPower = tanPower * 0.90;
     	processedTurn = (1 - Math.abs(processedPower)) * tanTurn;
-    	
+/*    	
     	DriverStation.reportWarning("Arcade Y: " + Robot.oi.getYAxisOfArcade(), false);
     	DriverStation.reportWarning("Arcade X: " + Robot.oi.getXAxisOfArcade(), false);
     	DriverStation.reportWarning("Processed Power: " + processedPower, false);
@@ -59,8 +58,8 @@ public class ArcadeDriveCmd extends Command {
     	DriverStation.reportWarning("Joystick Slider: " + joystickSlider, false);
     	DriverStation.reportWarning("Scaled Val Turn: " + scaledValTan(joystickX * joystickSlider, TANDOMAIN_X), false);
     	DriverStation.reportWarning("Scaled Val Power: " + scaledValTan(joystickY * joystickSlider, TANDOMAIN_Y), false);
-    	
-    	Robot.odt.driveLR(-(processedPower - processedTurn), -(processedPower + processedTurn));
+*/    	
+    	Robot.dt.driveLR(-(processedPower - processedTurn), -(processedPower + processedTurn));
     	
     }
 

@@ -16,9 +16,9 @@ package org.usfirst.frc.team6201.robot;
 public class RobotMap {
 	
 	// Drive Train
-	public static final int LEFT_DRIVE1 = 3;
+	public static final int LEFT_DRIVE1 = 1;
 	public static final int LEFT_DRIVE2 = 2;
-	public static final int RIGHT_DRIVE1 = 2;
+	public static final int RIGHT_DRIVE1 = 3;
 	public static final int RIGHT_DRIVE2 = 4;
 	
 	// Joystick
