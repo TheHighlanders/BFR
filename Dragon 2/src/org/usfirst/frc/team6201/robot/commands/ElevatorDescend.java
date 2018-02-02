@@ -1,48 +1,51 @@
-package org.usfirst.frc.team6201.robot.commands.gripper;
+package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class UltrasonicWheelStart extends Command {
+public class ElevatorDescend extends Command {
 
-	private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
-	private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
-	
-    public UltrasonicWheelStart() {
-
-    	requires(Robot.us);
-    	requires(Robot.dt);
+    public ElevatorDescend() {
+       
+    	requires(Robot.el);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	Robot.el.initializeCounters();
+    	Robot.el.descend();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	
+        return Robot.el.minSwitchSet();
+        
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	Robot.el.stop();
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
+    	end();
+    	
     }
 }

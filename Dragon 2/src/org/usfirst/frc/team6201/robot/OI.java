@@ -36,7 +36,12 @@ public class OI {
 		return logitech.getRawAxis(RobotMap.LOGITECH_Y_AXIS);
 		
 	}
-	
+
+	/**
+	 * @return a double corresponding to the slider on the joystick roughly under 
+	 * the wrist of someone if they are holding it.Has a range of -1 or 1, where 
+	 * -1 is pointing the slider up and 1 is pointing it down
+	 */
 	public double getSliderAxisOfArcade() {
 		
 		return logitech.getRawAxis(RobotMap.LOGITECH_SLIDER_AXIS);

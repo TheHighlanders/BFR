@@ -8,11 +8,13 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team6201.robot.subsystems.UltrasonicSensor;
+import org.usfirst.frc.team6201.robot.subsystems.Elevator;
+import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
+import org.usfirst.frc.team6201.robot.subsystems.OldDriveTrain;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,17 +25,32 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	
-	public static final DriveTrain dt = new DriveTrain();
+	/**
+	 * Creates a DriveTrain subsystem object which enables moving the robot
+	 * around.
+	 */
+	//public static final DriveTrain dt = new DriveTrain();
 	
-	public static final UltrasonicSensor us = new UltrasonicSensor();
+	public static final OldDriveTrain odt = new OldDriveTrain();
+	
+	/**
+	 * Creates a GripperIntake subsystem object which enables the automatic
+	 * start and stop of gripper motors depending on a target's distance
+	 * from the gripper.
+	 */
+	public static final GripperIntake gi = new GripperIntake();
+	
+	public static final Elevator el = new Elevator();
 	
 	public static OI oi;
 	
 	/**
 	 * 1 = rear left
-	 * 2 = front right
-	 * 3 = front left
-	 * 4 = rear right
+	 * 2 = front left
+	 * 3 = rear right
+	 * 4 = front right
+	 * 5 = gripper left
+	 * 6 = gripper right
 	 */
 	
 	/**
@@ -42,11 +59,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		
+
 		oi = new OI();
 		//dt.calibrateGyro();
 		
-		SmartDashboard.putNumber("TurboSpeed", 0.95);
+		//SmartDashboard.putNumber("TurboSpeed", 0.95);
 		DriverStation.reportWarning("Robot Initiated", false);
 
 	}
@@ -81,8 +98,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-				
-	//	Robot.dt.driveLR(0, 0);
+		
+		Scheduler.getInstance().run();
+		
+ 	//	Robot.dt.driveLR();
+	//	Robot.odt.driveLR(0, 0);
+		//gi.startWheels();
 		
 	}
 

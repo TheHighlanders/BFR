@@ -16,22 +16,22 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  *
  */
-public class DriveTrain extends Subsystem {
-
+public abstract class DriveTrain extends Subsystem {
+/*
 	public DifferentialDrive drive;
 	
-	private WPI_TalonSRX backLeft = new WPI_TalonSRX(3);
-    private WPI_TalonSRX frontLeft = new WPI_TalonSRX(4);
+	private WPI_TalonSRX frontLeft = new WPI_TalonSRX(2);
+    private WPI_TalonSRX backLeft = new WPI_TalonSRX(1);
     SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, backLeft);
     
-    private WPI_TalonSRX frontRight = new WPI_TalonSRX(1);
-    private WPI_TalonSRX backRight = new WPI_TalonSRX(2);
+    private WPI_TalonSRX frontRight = new WPI_TalonSRX(4);
+    private WPI_TalonSRX backRight = new WPI_TalonSRX(3);
     SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, backRight);
     
     private Joystick joystick;
-    
+
     private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-    
+ 
     private double turnSens = 0.10;
     
     private double tanPower;
@@ -56,32 +56,51 @@ public class DriveTrain extends Subsystem {
     	frontRight = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE1);
     	backRight = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE2); 
     	    	
+    	frontLeft.setInverted(true);
+    	backLeft.setInverted(true);
+    	    	
     	frontLeft.setNeutralMode(NeutralMode.Brake);
     	backLeft.setNeutralMode(NeutralMode.Brake);
     	frontRight.setNeutralMode(NeutralMode.Brake);
     	backRight.setNeutralMode(NeutralMode.Brake);
     	
-    	drive = new DifferentialDrive(leftDrive, rightDrive);
+    	drive = new DifferentialDrive(leftDrive, rightDrive);    	
     	joystick = new Joystick(1);
     	
     }
 	
     public void driveLR() {
     	
-    	double joystickForward = joystick.getY();
-    	double joystickTurn = 1.0 * joystick.getZ();
+    	double joystickPower = Robot.oi.getYAxisOfArcade();
+    	double joystickTurn = Robot.oi.getYAxisOfArcade();
+    	
+    	double joystickY = joystick.getY();
+    	
+    	DriverStation.reportWarning("Arcade Y: " + Robot.oi.getYAxisOfArcade(), false);
+    	DriverStation.reportWarning("Jostick Y: " + joystickY, false);
+    	
+    	if(joystickY == Robot.oi.getYAxisOfArcade()) {
+    		
+    		DriverStation.reportWarning("Y axes are equivalent. The problem you're looking for probably isn't here.", false);
+    		
+    	} else {
+    		
+    		DriverStation.reportWarning("Y axes are not equivalent. Maybe you should work on fixing that?", false);
+    		
+    	}
+    	
     	double joystickSlider = 0.5 * (1 + (-1 * Robot.oi.getSliderAxisOfArcade()));
     	
-    	tanPower = scaledValTan(joystickForward * joystickSlider, TANDOMAIN_X);
+    	tanPower = scaledValTan(joystickPower * joystickSlider, TANDOMAIN_X);
     	tanTurn = scaledValTan(joystickTurn * joystickSlider, TANDOMAIN_Y);
     	
-    	processedPower = tanPower;
+    	processedPower = tanPower * 0.90;
     	processedTurn = (1 - Math.abs(processedPower)) * tanTurn;
     	    	
     	
-    	if(Math.abs(joystickForward) < turnSens) {
+    	if(Math.abs(joystickPower) < turnSens) {
     		
-    		joystickForward = 0;
+    		joystickPower = 0;
     		
     	}
     	
@@ -92,16 +111,20 @@ public class DriveTrain extends Subsystem {
     	}    	
 
     	
-    	joystickForward = -(processedPower - processedTurn);
+    	joystickPower = -(processedPower - processedTurn);
     	joystickTurn = -(processedPower + processedTurn);
     	
-    	DriverStation.reportWarning("Left Power: " + joystickForward, false);
-    	DriverStation.reportWarning("Right Power: " + joystickTurn, false);
+    	//joystickPower = joystickLeft * joystickSlider;
+    	//joystickTurn = joystickRight * joystickSlider;
     	
-    	drive.arcadeDrive(joystickForward, joystickTurn);
+    	DriverStation.reportWarning("Power: " + joystickPower, false);
+    	DriverStation.reportWarning("Turn: " + joystickTurn, false);
+    	
+    	
+    	drive.arcadeDrive(joystickPower, joystickTurn);
     	
     }
-    
+  
     public void initDefaultCommand() {
 
     	
@@ -132,5 +155,5 @@ public class DriveTrain extends Subsystem {
     	
     }
     
-    
+   */ 
 }

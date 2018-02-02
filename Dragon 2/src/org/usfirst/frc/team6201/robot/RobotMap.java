@@ -31,5 +31,9 @@ public class RobotMap {
 	// Sensors
 	public static final int ULTRASONIC = 0;
 	
+	// Gripper
+	public static final int GRIPPER_LEFT = 5;
+	public static final int GRIPPER_RIGHT = 6;
+	
 	
 }
