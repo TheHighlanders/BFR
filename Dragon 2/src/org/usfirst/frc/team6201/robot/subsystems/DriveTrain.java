@@ -20,18 +20,13 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX left2 = new WPI_TalonSRX(2);
 	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
 	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
-	
-	private DigitalInput limitSwitch = new DigitalInput(0);
-	
-	
-	
+		
 	private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
 	public static int forwardOrReverse = -1;
 	
     public DriveTrain() {
     	
-    	DriverStation.reportWarning("Limit Switch Status: " + limitSwitch.get(), false);
     	
     	left1 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE1);
     	left2 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE2);
@@ -60,46 +55,23 @@ public class DriveTrain extends Subsystem {
     	
   //  	DriverStation.reportWarning("Left Power: " + leftPower, false);
   //  	DriverStation.reportWarning("Right Power: " + rightPower, false);
-    	
-    	if(limitSwitch.get()) {
+	    	
+    	if(forwardOrReverse == 1) {
     		
-    		if(forwardOrReverse == 1) {
-	    		
-	    		left1.set(-leftPower);
-	    		left2.set(-leftPower);
-	    		right1.set(0);
-	    		
-	    		
-	    	} else {
-	    		
-	    		left1.set(leftPower);
-	    		left2.set(leftPower);
-	    		right1.set(0);
-	    		
-	    	}
+    		left1.set(-leftPower);
+    		left2.set(-leftPower);
+    		right1.set(rightPower);
+    		right2.set(rightPower);
+    		
     		
     	} else {
-
-	    	
-	    	if(forwardOrReverse == 1) {
-	    		
-	    		left1.set(-leftPower);
-	    		left2.set(-leftPower);
-	    		right1.set(rightPower);
-	    		right2.set(rightPower);
-	    		
-	    		
-	    	} else {
-	    		
-	    		left1.set(leftPower);
-	    		left2.set(leftPower);
-	    		right1.set(-rightPower);
-	    		right2.set(-rightPower);
-	    		
-	    	}
-	    	
-    	}
-	    
+    		
+    		left1.set(leftPower);
+    		left2.set(leftPower);
+    		right1.set(-rightPower);
+    		right2.set(-rightPower);
+    		
+    	}	    
     	
     }
     
