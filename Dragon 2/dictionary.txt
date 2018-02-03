@@ -6,6 +6,7 @@ gyro
 brownouts
 drivetrain
 joystick
+adriana
 massie
 dashboard
 sendable
