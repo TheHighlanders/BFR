@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public static final GripperIntake gi = new GripperIntake();
 	
-	public static final Elevator el = new Elevator();
+	//public static final Elevator el = new Elevator();
 	
 	public static OI oi;
 	
@@ -97,7 +97,9 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-				
+		
+		DriverStation.reportWarning("Limit Switch Status: " + Robot.dt.limitSwitch.get(), false);
+		
  		//gi.startWheels();
 		
 	}
