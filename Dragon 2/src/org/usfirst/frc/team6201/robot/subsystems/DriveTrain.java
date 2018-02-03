@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
 	
 	public static int forwardOrReverse = -1;
 	
-    public void DriveTrain() {
+    public DriveTrain() {
     	
     	DriverStation.reportWarning("Limit Switch Status: " + limitSwitch.get(), false);
     	
