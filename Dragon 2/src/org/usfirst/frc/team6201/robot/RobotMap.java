@@ -12,6 +12,8 @@ package org.usfirst.frc.team6201.robot;
  * to a variable name. This provides flexibility changing wiring, makes checking
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
+ * 
+ * @author Baxter Ellard
  */
 public class RobotMap {
 	
@@ -21,19 +23,24 @@ public class RobotMap {
 	public static final int RIGHT_DRIVE1 = 3;
 	public static final int RIGHT_DRIVE2 = 4;
 	
+	// Gripper
+	public static final int GRIPPER_LEFT = 5;
+	public static final int GRIPPER_RIGHT = 6;
+	
+	// Elevator
+	public static final int ELEVATOR_MOTOR1 = 7;
+	public static final int ELEVATOR_MOTOR2 = 8;
+	
+	// Sensors
+	public static final int MAX_LIMIT_SWITCH = 0;
+	public static final int MIN_LIMIT_SWITCH = 1;
+	public static final int ULTRASONIC = 2;
+	
 	// Joystick
 	public static final int LOGITECH = 1;
 	public static final int LOGITECH_X_AXIS = 0;
 	public static final int LOGITECH_Y_AXIS = 1;
 	public static final int LOGITECH_ROTATE_AXIS = 2;
 	public static final int LOGITECH_SLIDER_AXIS = 3;
-	
-	// Sensors
-	public static final int ULTRASONIC = 0;
-	
-	// Gripper
-	public static final int GRIPPER_LEFT = 5;
-	public static final int GRIPPER_RIGHT = 6;
-	
 	
 }

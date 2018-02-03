@@ -2,38 +2,42 @@ package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * 
- * Automatically starts and stops the motors on the gripper when a cube
- * is near and when a cube is actually in the gripper, respectively.
+ * Uses ultrasonic sensors and TalonSRX motor controllers to automatically 
+ * start and stop the motors on the gripper when a cube is near and when a 
+ * cube is actually in the gripper, respectively. 
  * 
  * @author Baxter Ellard
- * 
  */
 public class GripperIntake extends Subsystem {
 	
-    //private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
-    //private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
+	// Instantiates TalonSRX motor controllers at CAN Ports
+	// 5 and 6.
+    private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
+    private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
 	
     /**
      * Ultrasonic sets up the ultrasonic sensor to be read as analog input.
      */
-    private AnalogInput ultrasonic = new AnalogInput(RobotMap.ULTRASONIC);
+    private AnalogInput ultrasonic = new AnalogInput(0);
+    
     // factor to convert sensor values to a distance in inches
     private static final double valueToInches = 0.125;
     
+    /**
+     * Constructor, sets up motors and ultrasonic sensor.
+     */
     public GripperIntake() {
     	
     	//leftIntake = new WPI_TalonSRX(RobotMap.GRIPPER_LEFT);
     	//rightIntake = new WPI_TalonSRX(RobotMap.GRIPPER_RIGHT);
     	
-    	//rightIntake.setInverted(true);
+    	ultrasonic = new AnalogInput(RobotMap.ULTRASONIC);
     	
     }
     
@@ -56,14 +60,14 @@ public class GripperIntake extends Subsystem {
     	if(targetDistance <= startDistance && targetDistance > stopDistance) {
     		
     		// if yes, set motor speed to 1
-    		//leftIntake.set(ControlMode.PercentOutput, 1.0);
-    		//rightIntake.set(ControlMode.PercentOutput, 1.0);
+    		//leftIntake.set(1.0);
+    		//rightIntake.set(-1.0);
     		
     	} else {
     		
     		// if no, set motor speed to 0
-    		//leftIntake.set(ControlMode.PercentOutput, 0.0);
-    		//rightIntake.set(ControlMode.PercentOutput, 0.0);
+    		//leftIntake.set(0.0);
+    		//rightIntake.set(0.0);
     		
     	}
     	

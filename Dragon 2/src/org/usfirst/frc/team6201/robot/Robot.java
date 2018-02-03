@@ -21,6 +21,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
  * project.
+ * 
+ * @author Baxter Ellard
  */
 public class Robot extends IterativeRobot {
 	
@@ -37,17 +39,27 @@ public class Robot extends IterativeRobot {
 	 */
 	public static final GripperIntake gi = new GripperIntake();
 	
+	/**
+	 * Creates an Elevator subsystem object which enables moving the elevator up and down.
+	 */
 	public static final Elevator el = new Elevator();
 	
+	/**
+	 * Declare the Operator Interface object. DO NOT initialize it here; that
+	 * would cause No Robot Code to occur.
+	 */
 	public static OI oi;
 	
 	/**
+	 * TalonSRX CAN Port Assignments:
 	 * 1 = rear left
 	 * 2 = front left
 	 * 3 = rear right
 	 * 4 = front right
 	 * 5 = gripper left
 	 * 6 = gripper right
+	 * 7 = elevator motor 1
+	 * 8 = elevator motor 2
 	 */
 	
 	/**
@@ -97,7 +109,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-		
+				
  		//gi.startWheels();
 		
 	}
