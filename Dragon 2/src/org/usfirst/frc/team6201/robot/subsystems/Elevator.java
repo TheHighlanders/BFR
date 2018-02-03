@@ -10,63 +10,51 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public abstract class Elevator extends Subsystem {
-
-/*	
+public class Elevator extends Subsystem {
+	
     private DigitalInput maxSwitch = new DigitalInput(0);
     private DigitalInput minSwitch = new DigitalInput(1);
     
     private WPI_TalonSRX elevator1 = new WPI_TalonSRX(7);
     private WPI_TalonSRX elevator2 = new WPI_TalonSRX(8);
-    
-    private Counter maxCounter = new Counter(maxSwitch);
-    private Counter minCounter = new Counter(minSwitch);
-    
+        
     public boolean maxSwitchSet() {
     	
-    	return maxCounter.get() > 0;
+    	return maxSwitch.get();
     	
     }
     
     public boolean minSwitchSet() {
     	
-    	return minCounter.get() > 0;
+    	return minSwitch.get();
     	
     }
-	
-    public void initializeCounters() {
-    	
-    	maxCounter.reset();
-    	minCounter.reset();
-    	
-    }
-    
+	    
     public void ascend() {
     	
-    	elevator1.set(ControlMode.PercentOutput, 0.75);
-    	elevator2.set(ControlMode.PercentOutput, 0.75);
+    	elevator1.set(0.75);
+    	elevator2.set(0.75);
     	
     }
     
     public void descend() {
     	
-    	elevator1.set(ControlMode.PercentOutput, -0.75);
-    	elevator2.set(ControlMode.PercentOutput, -0.75);
+    	elevator1.set(-0.75);
+    	elevator2.set(-0.75);
     	
     }
     
     public void stop() {
     	
-    	elevator1.set(ControlMode.PercentOutput, 0.0);
-    	elevator2.set(ControlMode.PercentOutput, 0.0);
+    	elevator1.set(0.0);
+    	elevator2.set(0.0);
     	
     }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    }
-*/    
+    }   
     
 }
 
