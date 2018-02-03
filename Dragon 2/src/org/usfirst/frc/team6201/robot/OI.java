@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team6201.robot;
 
+import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -53,6 +56,17 @@ public class OI {
 	public boolean getButton1() {
 		
 		return b1.get();
+		
+	}
+	
+	public OI() {
+		
+		Button b9 = new JoystickButton(logitech, 9);
+		b9.toggleWhenPressed(new ElevatorAscendCmd());
+		
+		Button b10 = new JoystickButton(logitech, 10);
+		b10.toggleWhenPressed(new ElevatorDescendCmd());
+		
 		
 	}
 	
