@@ -21,7 +21,7 @@ public class DriveTrain extends Subsystem {
 	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
 	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
 	
-	private DigitalInput limitSwitch = new DigitalInput(0);
+	public DigitalInput limitSwitch = new DigitalInput(0);
 	
 	
 	
@@ -30,9 +30,7 @@ public class DriveTrain extends Subsystem {
 	public static int forwardOrReverse = -1;
 	
     public DriveTrain() {
-    	
-    	DriverStation.reportWarning("Limit Switch Status: " + limitSwitch.get(), false);
-    	
+    	    	
     	left1 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE1);
     	left2 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE2);
     	right1 = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE1);
@@ -61,20 +59,21 @@ public class DriveTrain extends Subsystem {
   //  	DriverStation.reportWarning("Left Power: " + leftPower, false);
   //  	DriverStation.reportWarning("Right Power: " + rightPower, false);
     	
-    	if(limitSwitch.get()) {
+    	if(!limitSwitch.get()) {
     		
     		if(forwardOrReverse == 1) {
 	    		
-	    		left1.set(-leftPower);
-	    		left2.set(-leftPower);
+	    		left1.set(0);
+	    		left2.set(0);
 	    		right1.set(0);
-	    		
+	    		right2.set(0);
 	    		
 	    	} else {
 	    		
-	    		left1.set(leftPower);
-	    		left2.set(leftPower);
+	    		left1.set(0);
+	    		left2.set(0);
 	    		right1.set(0);
+	    		right2.set(0);
 	    		
 	    	}
     		

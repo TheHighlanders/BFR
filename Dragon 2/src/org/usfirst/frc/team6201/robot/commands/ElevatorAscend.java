@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorAscend extends Command {
-
+public abstract class ElevatorAscend extends Command {
+/*
     public ElevatorAscend() {
        
     	requires(Robot.el);
@@ -48,4 +48,5 @@ public class ElevatorAscend extends Command {
     	end();
     	
     }
+   */
 }

@@ -10,8 +10,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Elevator extends Subsystem {
+public abstract class Elevator extends Subsystem {
 
+/*	
     private DigitalInput maxSwitch = new DigitalInput(0);
     private DigitalInput minSwitch = new DigitalInput(1);
     
@@ -65,5 +66,7 @@ public class Elevator extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+*/    
+    
 }
 
