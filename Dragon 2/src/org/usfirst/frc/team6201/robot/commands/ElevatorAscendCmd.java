@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public abstract class ElevatorDescend extends Command {
-/*
-    public ElevatorDescend() {
+public class ElevatorAscendCmd extends Command {
+
+    public ElevatorAscendCmd() {
        
     	requires(Robot.el);
     	
@@ -18,20 +18,22 @@ public abstract class ElevatorDescend extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.el.initializeCounters();
-    	Robot.el.descend();
+    	
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	Robot.el.ascend();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.minSwitchSet();
-        
+        return !Robot.el.maxSwitchSet();
+    
     }
 
     // Called once after isFinished returns true
@@ -48,5 +50,5 @@ public abstract class ElevatorDescend extends Command {
     	end();
     	
     }
-    */
+
 }
