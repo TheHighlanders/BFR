@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Automatically starts and stops the motors on the gripper when a cube
  * is near and when a cube is actually in the gripper, respectively.
  * 
+ * Mysteriously commented out... why? 
+ * 
  * @author Baxter Ellard
  * 
  */

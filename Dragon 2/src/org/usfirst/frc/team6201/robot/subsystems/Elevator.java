@@ -1,5 +1,7 @@
 package org.usfirst.frc.team6201.robot.subsystems;
 
+import org.usfirst.frc.team6201.robot.RobotMap;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -15,9 +17,10 @@ public class Elevator extends Subsystem {
     private DigitalInput maxSwitch = new DigitalInput(0);
     private DigitalInput minSwitch = new DigitalInput(1);
     
-    private WPI_TalonSRX elevator1 = new WPI_TalonSRX(7);
-    private WPI_TalonSRX elevator2 = new WPI_TalonSRX(8);
+    private WPI_TalonSRX elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR1);
+    private WPI_TalonSRX elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR2);
     
+    //fake encoders: returns number of motor rotations??
     private Counter maxCounter = new Counter(maxSwitch);
     private Counter minCounter = new Counter(minSwitch);
     
@@ -41,7 +44,7 @@ public class Elevator extends Subsystem {
     }
     
     public void ascend() {
-    	
+    	//Consider deleting first argument. Probably unnecessary. 
     	elevator1.set(ControlMode.PercentOutput, 0.75);
     	elevator2.set(ControlMode.PercentOutput, 0.75);
     	

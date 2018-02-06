@@ -31,9 +31,12 @@ public class RobotMap {
 	// Sensors
 	public static final int ULTRASONIC = 0;
 	
-	// Gripper
+	// Gripper THESE PORTS MAY NOT BE CORRE
 	public static final int GRIPPER_LEFT = 5;
 	public static final int GRIPPER_RIGHT = 6;
 	
+	// Elevator
+	public static final int ELEVATOR1 = 7;
+	public static final int ELEVATOR2 = 8;
 	
 }

@@ -28,6 +28,7 @@ public class ElevatorDescend extends Command {
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    //minSwitchSet = 1 when the switch triggers (ie elevator fully lowers)
     protected boolean isFinished() {
     	
         return Robot.el.minSwitchSet();

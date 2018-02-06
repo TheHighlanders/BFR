@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-	private WPI_TalonSRX left1 = new WPI_TalonSRX(1);
-	private WPI_TalonSRX left2 = new WPI_TalonSRX(2);
-	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
-	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
+	private WPI_TalonSRX left1;
+	private WPI_TalonSRX left2;
+	private WPI_TalonSRX right1;
+	private WPI_TalonSRX right2;
 	
 	private DigitalInput limitSwitch = new DigitalInput(0);
 	
