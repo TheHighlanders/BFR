@@ -32,8 +32,6 @@ public class RobotMap {
 	public static final int ELEVATOR_MOTOR2 = 8;
 	
 	// Sensors
-	public static final int MAX_LIMIT_SWITCH = 0;
-	public static final int MIN_LIMIT_SWITCH = 1;
 	public static final int ULTRASONIC = 2;
 	
 	// Joystick
