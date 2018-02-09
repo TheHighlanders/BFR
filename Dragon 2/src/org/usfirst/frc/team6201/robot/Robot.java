@@ -11,6 +11,7 @@ import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,6 +26,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * @author Baxter Ellard
  */
 public class Robot extends IterativeRobot {
+	
+	DigitalInput magnet = new DigitalInput(1);
 	
 	/**
 	 * Creates a DriveTrain subsystem object which enables moving the robot
@@ -109,7 +112,11 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-				
+		
+		DriverStation.reportWarning("DIO Port 0: " + Robot.el.maxSwitch.get() , false);
+		DriverStation.reportWarning("DIO Port 1: " + magnet.get(), false);
+		DriverStation.reportWarning("Max Switch: " + Robot.el.maxSwitchTriggered(), false);
+		
  		//gi.startWheels();
 		
 	}

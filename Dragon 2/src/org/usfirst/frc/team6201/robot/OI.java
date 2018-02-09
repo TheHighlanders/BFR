@@ -89,8 +89,8 @@ public class OI {
 		Button b9 = new JoystickButton(logitech, 9);
 		b9.toggleWhenPressed(new ElevatorAscendCmd());
 		
-		Button b10 = new JoystickButton(logitech, 10);
-		b10.toggleWhenPressed(new ElevatorDescendCmd());
+		//Button b10 = new JoystickButton(logitech, 10);
+		//b10.toggleWhenPressed(new ElevatorDescendCmd());
 		
 		
 	}

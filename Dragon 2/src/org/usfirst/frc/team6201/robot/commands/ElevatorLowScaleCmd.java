@@ -30,7 +30,11 @@ public class ElevatorLowScaleCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(lessThanDistance()) {
+    	if(Robot.el.getEncoderDistance() == 66.0) {
+    		
+    		end();
+    		
+    	} else if(lessThanDistance()) {
     		
     		while(lessThanDistance()) {
     			
@@ -42,7 +46,7 @@ public class ElevatorLowScaleCmd extends Command {
     		
     		while(!lessThanDistance()) {
     			
-    			
+    			Robot.el.descend();
     			
     		}
     		
@@ -59,6 +63,9 @@ public class ElevatorLowScaleCmd extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	Robot.el.stop();
+    	
     }
 
     // Called when another command which requires one or more of the same
