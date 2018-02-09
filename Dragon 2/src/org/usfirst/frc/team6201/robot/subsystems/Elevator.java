@@ -125,8 +125,6 @@ public class Elevator extends Subsystem {
     	
     }
     
-    public boolean 
-    
 	/**
 	 * Extends the elevator at a speed of 0.75.
 	 */
