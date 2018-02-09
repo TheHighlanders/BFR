@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorLowScaleCmd extends Command {
-
+public abstract class ElevatorLowScaleCmd extends Command {
+/*
 	private boolean lessThanDistance() {
 		
 		return Robot.el.getEncoderDistance() < 66.0;
@@ -72,4 +72,5 @@ public class ElevatorLowScaleCmd extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    */
 }

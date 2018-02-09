@@ -27,8 +27,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class Robot extends IterativeRobot {
 	
-	DigitalInput magnet = new DigitalInput(1);
-	
 	/**
 	 * Creates a DriveTrain subsystem object which enables moving the robot
 	 * around.
@@ -114,7 +112,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		DriverStation.reportWarning("DIO Port 0: " + Robot.el.maxSwitch.get() , false);
-		DriverStation.reportWarning("DIO Port 1: " + magnet.get(), false);
+		DriverStation.reportWarning("DIO Port 1: " + Robot.el.magEnc.get(), false);
 		DriverStation.reportWarning("Max Switch: " + Robot.el.maxSwitchTriggered(), false);
 		
  		//gi.startWheels();

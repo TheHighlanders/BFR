@@ -23,22 +23,8 @@ public class Elevator extends Subsystem {
     public DigitalInput maxSwitch = new DigitalInput(0);
     //private DigitalInput minSwitch = new DigitalInput(1);
     
-    private Encoder elevatorEnc = new Encoder(8, 9, false, Encoder.EncodingType.k4X);
+    public DigitalInput magEnc = new DigitalInput(1);
     
-    
-    private static final double WHEEL_DIAMETER = 2.5;
-    private static final double PULSE_PER_REVOLUTION = 1;
-    private static final double ENCODER_GEAR_RATIO = 1;
-    private static final double GEAR_RATIO = 12 / 1;
-    private static final double FUDGE_FACTOR = 1.0;
-    
-    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSE_PER_REVOLUTION / ENCODER_GEAR_RATIO / GEAR_RATIO * FUDGE_FACTOR;
-    
-    public int count = elevatorEnc.get();
-    double distance = elevatorEnc.getDistance();
-    double rate = elevatorEnc.getRate();
-    boolean stopped = elevatorEnc.getStopped();
-    boolean direction = elevatorEnc.getDirection();
     
     // Instantiates TalonSRX motor controllers at CAN ports
     // 7 and 8.
@@ -51,12 +37,15 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
-    	
-    	elevatorEnc.setMinRate(10);
-    	elevatorEnc.setDistancePerPulse(DISTANCE_PER_PULSE);
+    
     	
     }
     
+    public boolean magEncTriggered() {
+    	
+    	return !magEnc.get();
+    	
+    }
     /**
      * Checks the status of the limit switch wired to detect maximum elevator
      * height.
@@ -88,38 +77,7 @@ public class Elevator extends Subsystem {
     /**
      * @return the current count of rotations. May be reset by calling reset()
      */
-    public int getEncoderCount() {
-    	
-    	return count;
-    	
-    }
     
-    /**
-     * @return the current distance reading from the counter.
-     */
-    public double getEncoderDistance() {
-    	
-    	return distance;
-    	
-    }
-    
-    public double getEncoderRate() {
-    	
-    	return rate;
-    	
-    }
-    
-    public boolean getEncoderStopped() {
-    	
-    	return stopped;
-    	
-    }
-    
-    public boolean getEncoderDirection() {
-    	
-    	return direction;
-    	
-    }
     
 	/**
 	 * Extends the elevator at a speed of 0.75.
