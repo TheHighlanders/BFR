@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorAscendCmd extends Command {
+public class ElevatorLowScaleCmd extends Command {
 
-    public ElevatorAscendCmd() {
+    public ElevatorLowScaleCmd() {
        
     	requires(Robot.el);
     	
@@ -17,38 +17,30 @@ public class ElevatorAscendCmd extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.el.ascend();
+    	if(Robot.el.getEncoderDistance() < 66) {
+    		
+    		Robot.el.ascend();
+    		
+    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	
-        return !Robot.el.maxSwitchTriggered();
-    
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
-    	Robot.el.stop();
-    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
-    	end();
-    	
     }
-
 }
