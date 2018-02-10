@@ -15,7 +15,7 @@ public class ElevatorLowScaleCmd extends Command {
 		
 	}
 	
-	double desiredDistance = 66.0;
+	double desiredDistance = 54.0;
 	
     public ElevatorLowScaleCmd() {
        

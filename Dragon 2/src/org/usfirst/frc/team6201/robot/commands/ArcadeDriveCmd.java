@@ -24,9 +24,16 @@ public class ArcadeDriveCmd extends Command {
 		
 	}
 	
+	private double linearElevatorScale(double height) {
+		
+		return (-height)/104 + 1;
+		
+	}
+	
     public ArcadeDriveCmd() {
         
     	requires(Robot.dt);
+    	requires(Robot.el);
     	
     }
 
@@ -41,11 +48,16 @@ public class ArcadeDriveCmd extends Command {
     	double joystickY = Robot.oi.getYAxisOfArcade();
     	double joystickSlider = 0.5 * (1 + (-1 * Robot.oi.getSliderAxisOfArcade()));
     	
+    	joystickX = linearElevatorScale(Robot.el.getEncoderDistance());
+    	joystickY = linearElevatorScale(Robot.el.getEncoderDistance());
+    	
     	tanTurn = scaledValTan(joystickX * joystickSlider, TANDOMAIN_X);
     	tanPower = scaledValTan(joystickY * joystickSlider, TANDOMAIN_Y);
     	
     	processedPower = tanPower * 0.90;
     	processedTurn = (1 - Math.abs(processedPower)) * tanTurn;
+    	
+    	
 /*    	
     	DriverStation.reportWarning("Arcade Y: " + Robot.oi.getYAxisOfArcade(), false);
     	DriverStation.reportWarning("Arcade X: " + Robot.oi.getXAxisOfArcade(), false);

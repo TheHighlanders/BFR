@@ -13,6 +13,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * two TalonSRX motor controllers and two limit switches for detecting
  * maximum and minimum height.
  * 
+ * Elevator Heights:
+ * Top - 78 inches
+ * Mid - 66 inches
+ * Low - 54 inches
+ * 
  * TODO: Add encoders to detect how high the elevator is at a certain point.
  * 
  * @author Baxter Ellard
@@ -123,9 +128,13 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	elevator1.set(-1);
-    	elevator2.set(1);
+    	while(!minSwitchTriggered()) {
     	
+			elevator1.set(-1);
+	    	elevator2.set(1);
+			
+    	}
+	    	
     }
     
     /**
