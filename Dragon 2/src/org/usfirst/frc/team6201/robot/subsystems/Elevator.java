@@ -21,9 +21,9 @@ public class Elevator extends Subsystem {
 	
 	// Instantiates limit switches at DIO ports 0 and 1.
     public DigitalInput maxSwitch = new DigitalInput(0);
-    //private DigitalInput minSwitch = new DigitalInput(1);
+    private DigitalInput minSwitch = new DigitalInput(1);
     
-    public DigitalInput magEnc = new DigitalInput(1);
+    public DigitalInput magEnc = new DigitalInput(2);
     
     public Counter encoder = new Counter(magEnc);
     
@@ -63,7 +63,7 @@ public class Elevator extends Subsystem {
      */
     public boolean maxSwitchTriggered() {
     	
-    	return maxSwitch.get();
+    	return !maxSwitch.get();
     	
     }
     
@@ -75,11 +75,11 @@ public class Elevator extends Subsystem {
      * 		   of this when using the method in the isFinished() methods of
      *         commands. 
      */
-    /*public boolean minSwitchTriggered() {
+    public boolean minSwitchTriggered() {
     	
-    	return minSwitch.get();
+    	return !minSwitch.get();
     	
-    }*/
+    }
     
     /**
      * @return the current count of rotations. May be reset by calling reset()
