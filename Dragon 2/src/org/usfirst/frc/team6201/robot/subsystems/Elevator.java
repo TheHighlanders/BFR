@@ -47,8 +47,10 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
-    	
 
+    	encoder.setMaxPeriod(0.1);
+    	encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
+    	
     }
     
     /**
