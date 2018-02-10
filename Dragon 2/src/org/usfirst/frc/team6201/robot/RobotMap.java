@@ -28,16 +28,14 @@ public class RobotMap {
 	public static final int GRIPPER_RIGHT = 6;
 	
 	// Elevator
-	public static final int ELEVATOR_MOTOR1 = 7;
-	public static final int ELEVATOR_MOTOR2 = 8;
+	public static final int ELEVATOR_MOTOR1 = 1;
+	public static final int ELEVATOR_MOTOR2 = 2;
 	
 	// Sensors
-	public static final int MAX_LIMIT_SWITCH = 0;
-	public static final int MIN_LIMIT_SWITCH = 1;
 	public static final int ULTRASONIC = 2;
 	
 	// Joystick
-	public static final int LOGITECH = 1;
+	public static final int LOGITECH = 0;
 	public static final int LOGITECH_X_AXIS = 0;
 	public static final int LOGITECH_Y_AXIS = 1;
 	public static final int LOGITECH_ROTATE_AXIS = 2;

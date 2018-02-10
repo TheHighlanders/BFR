@@ -2,57 +2,41 @@ package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public abstract class ElevatorAscendCmd extends Command {
-/*
-	private int revs = 0;
-	private boolean lasttime = false;
-    public ElevatorAscendCmd() {
+public class CubeEjectCmd extends Command {
+
+    public CubeEjectCmd() {
        
+    	requires(Robot.gi);
     	requires(Robot.el);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.el.magEncTriggered() && !lasttime){
-    		revs++;
-    		lasttime = true;
-    	}
     	
-    	if(!Robot.el.magEncTriggered() && lasttime){
-    		lasttime = false;
-    	}
+    	Robot.gi.eject();
     	
-    	if(Robot.el.maxSwitchTriggered()){
-    		Robot.el.ascend();
-    	}
-    	else{
-    		Robot.el.stop();
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	
-        return revs > 10;
-    
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	
-    	Robot.el.stop();
+    	Robot.gi.stop();
+    	Robot.el.descend();
     	
     }
 
@@ -60,8 +44,7 @@ public abstract class ElevatorAscendCmd extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	
-    	end();
+    	Robot.gi.stop();
     	
     }
-*/
 }

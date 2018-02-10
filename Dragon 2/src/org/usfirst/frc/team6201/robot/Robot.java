@@ -11,6 +11,7 @@ import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -109,7 +110,15 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		
 		Scheduler.getInstance().run();
-				
+		
+		DriverStation.reportWarning("DIO Port 0: " + el.maxSwitch.get() , false);
+		DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
+		DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
+		DriverStation.reportWarning("Revs: " + el.getEncoderRevs(), false);
+		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
+		DriverStation.reportWarning("Encoder Rate: " + el.getEncoderRate(), false);
+		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
+		
  		//gi.startWheels();
 		
 	}

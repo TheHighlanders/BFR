@@ -2,17 +2,22 @@ package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public abstract class ElevatorAscendCmd extends Command {
-/*
-	private int revs = 0;
-	private boolean lasttime = false;
-    public ElevatorAscendCmd() {
+public class ElevatorLowScaleCmd extends Command {
+
+	private boolean lessThanDistance() {
+		
+		return Robot.el.getEncoderDistance() < desiredDistance;
+		
+	}
+	
+	double desiredDistance = 54.0;
+	
+    public ElevatorLowScaleCmd() {
        
     	requires(Robot.el);
     	
@@ -20,33 +25,32 @@ public abstract class ElevatorAscendCmd extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.el.magEncTriggered() && !lasttime){
-    		revs++;
-    		lasttime = true;
+    	
+    	if(Robot.el.getEncoderDistance() == desiredDistance) {
+    		
+    		end();
+    		
+    	} else if(lessThanDistance()) {
+    			
+    			Robot.el.ascend();
+    		
+    	} else if(!lessThanDistance()) {
+    			
+    			Robot.el.descend();
+		
     	}
     	
-    	if(!Robot.el.magEncTriggered() && lasttime){
-    		lasttime = false;
-    	}
-    	
-    	if(Robot.el.maxSwitchTriggered()){
-    		Robot.el.ascend();
-    	}
-    	else{
-    		Robot.el.stop();
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return revs > 10;
-    
+        return Robot.el.getEncoderDistance() == desiredDistance;
+        
     }
 
     // Called once after isFinished returns true
@@ -63,5 +67,5 @@ public abstract class ElevatorAscendCmd extends Command {
     	end();
     	
     }
-*/
+
 }

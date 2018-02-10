@@ -29,13 +29,19 @@ public class GripperIntake extends Subsystem {
     // factor to convert sensor values to a distance in inches
     private static final double valueToInches = 0.125;
     
+    // Distance from sensor to target in inches
+    public double targetDistance = ultrasonic.getValue() * valueToInches;
+    
     /**
      * Constructor, sets up motors and ultrasonic sensor.
      */
     public GripperIntake() {
     	
-    	//leftIntake = new WPI_TalonSRX(RobotMap.GRIPPER_LEFT);
-    	//rightIntake = new WPI_TalonSRX(RobotMap.GRIPPER_RIGHT);
+    	leftIntake = new WPI_TalonSRX(RobotMap.GRIPPER_LEFT);
+    	rightIntake = new WPI_TalonSRX(RobotMap.GRIPPER_RIGHT);
+    	
+    	leftIntake.configOpenloopRamp(1, 0);
+    	rightIntake.configOpenloopRamp(1, 0);
     	
     	ultrasonic = new AnalogInput(RobotMap.ULTRASONIC);
     	
@@ -45,13 +51,11 @@ public class GripperIntake extends Subsystem {
      * Checks if the target is within a certain distance and starts the 
      * motors accordingly.
      */
-    public void startWheels() {
+    public void autoWheelIntake() {
     	
-    	// distance from the sensor to the target
-    	double targetDistance = ultrasonic.getValue() * valueToInches;
     	// distance at which we want the wheels to start turning
     	// equivalent to 2.5 feet
-    	double startDistance = 30.0;
+    	double startDistance = 42.0;
     	// distance at which we want the wheels to stop turning
     	double stopDistance = 3.0;
     	
@@ -66,12 +70,31 @@ public class GripperIntake extends Subsystem {
     	} else {
     		
     		// if no, set motor speed to 0
-    		//leftIntake.set(0.0);
-    		//rightIntake.set(0.0);
+    		stop();
     		
     	}
     	
     }
+    
+    public void eject() {
+    	
+    	while(targetDistance < 16) {
+    	
+    		leftIntake.set(-1.0);
+    		rightIntake.set(1.0);
+    		
+    	}
+    	
+    }
+    
+    public void stop() {
+    	
+    	leftIntake.set(0.0);
+    	rightIntake.set(0.0);
+    	
+    }
+    
+    
     
     public void initDefaultCommand() {
     }
