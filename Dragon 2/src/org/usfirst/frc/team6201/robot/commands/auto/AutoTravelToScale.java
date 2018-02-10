@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
- */ 
-public class AutoTravelToSwitch extends Command {
+ */
+public class AutoTravelToScale extends Command {
 
 	private int left1Pos = Robot.dt.left1.getSensorCollection().getPulseWidthPosition();
 	private int left2Pos = Robot.dt.left2.getSensorCollection().getPulseWidthPosition();
@@ -16,7 +16,7 @@ public class AutoTravelToSwitch extends Command {
 	
 	private boolean finished() {
 		
-		if(left1Pos == -36864 && left2Pos == -36864 && right1Pos == 36864 && right2Pos == 36864) {
+		if(left1Pos == -70405 && left2Pos == -70405 && right1Pos == 70405 && right2Pos == 70405) {
 			
 			return true;
 		
@@ -28,7 +28,7 @@ public class AutoTravelToSwitch extends Command {
 		
 	}
 	
-    public AutoTravelToSwitch() {
+    public AutoTravelToScale() {
         
     	requires(Robot.dt);
     	
@@ -41,10 +41,10 @@ public class AutoTravelToSwitch extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.dt.left1.configReverseSoftLimitThreshold(-9 * 4096, 10);
-    	Robot.dt.left2.configReverseSoftLimitThreshold(-9 * 4096, 10);
-    	Robot.dt.right1.configForwardSoftLimitThreshold(9 * 4096, 10);
-    	Robot.dt.right2.configForwardSoftLimitThreshold(9 * 4096, 10);
+    	Robot.dt.left1.configReverseSoftLimitThreshold(-17 * 4096, 10);
+    	Robot.dt.left2.configReverseSoftLimitThreshold(-17 * 4096, 10);
+    	Robot.dt.right1.configForwardSoftLimitThreshold(17 * 4096, 10);
+    	Robot.dt.right2.configForwardSoftLimitThreshold(17 * 4096, 10);
     	
     	Robot.dt.left1.configReverseSoftLimitEnable(true, 10);
     	Robot.dt.left2.configReverseSoftLimitEnable(true, 10);
