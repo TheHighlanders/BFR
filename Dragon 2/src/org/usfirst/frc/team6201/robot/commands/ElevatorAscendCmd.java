@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorAscendCmd extends Command {
-
+public abstract class ElevatorAscendCmd extends Command {
+/*
 	private int revs = 0;
 	private boolean lasttime = false;
     public ElevatorAscendCmd() {
@@ -63,5 +63,5 @@ public class ElevatorAscendCmd extends Command {
     	end();
     	
     }
-
+*/
 }

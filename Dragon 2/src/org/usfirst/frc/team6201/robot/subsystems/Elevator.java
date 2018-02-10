@@ -2,8 +2,8 @@ package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -25,10 +25,20 @@ public class Elevator extends Subsystem {
     
     public DigitalInput magEnc = new DigitalInput(1);
     
+    public Counter encoder = new Counter(magEnc);
     
-    // Instantiates TalonSRX motor controllers at CAN ports
-    // 7 and 8.
-    private VictorSP elevator = new VictorSP(RobotMap.ELEVATOR_MOTOR);
+    private static final double WHEEL_DIAMETER = 2.5;
+    private static final double PULSE_PER_REVOLUTION = 1;
+    private static final double ENCODER_GEAR_RATIO = 1;
+    private static final double GEAR_RATIO = 12 / 1;
+    private static final double FUDGE_FACTOR = 1.0;
+    
+    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSE_PER_REVOLUTION / ENCODER_GEAR_RATIO / GEAR_RATIO * FUDGE_FACTOR;
+    
+    // Instantiates VictorSP motor controllers at PWM ports
+    // 1 and 2.
+    private VictorSP elevator1 = new VictorSP(RobotMap.ELEVATOR_MOTOR1);
+    private VictorSP elevator2 = new VictorSP(RobotMap.ELEVATOR_MOTOR2);
           
     /**
      * Constructor, sets up motors and limit switches.
@@ -37,15 +47,12 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
-    
+    	
+    	encoder.setMaxPeriod(0.1);
+    	encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
     	
     }
     
-    public boolean magEncTriggered() {
-    	
-    	return !magEnc.get();
-    	
-    }
     /**
      * Checks the status of the limit switch wired to detect maximum elevator
      * height.
@@ -77,14 +84,37 @@ public class Elevator extends Subsystem {
     /**
      * @return the current count of rotations. May be reset by calling reset()
      */
+    public int getEncoderRevs() {
+    	
+    	return encoder.get();
+    	
+    }
     
+    public double getEncoderDistance() {
+    	
+    	return encoder.getDistance();
+    	
+    }
+    
+    public double getEncoderRate() {
+    	
+    	return encoder.getRate();
+    	
+    }
+    
+    public boolean getEncoderStopped() {
+    	
+    	return encoder.getStopped();
+    	
+    }
     
 	/**
 	 * Extends the elevator at a speed of 0.75.
 	 */
     public void ascend() {
     	
-    	elevator.set(1);
+    	elevator1.set(1);
+    	elevator2.set(-1);
     	
     }
     
@@ -93,7 +123,8 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	elevator.set(-1);
+    	elevator1.set(-1);
+    	elevator2.set(1);
     	
     }
     
@@ -102,7 +133,8 @@ public class Elevator extends Subsystem {
      */
     public void stop() {
     	
-    	elevator.set(0);
+    	elevator1.set(0);
+    	elevator2.set(0);
     	
     }
 

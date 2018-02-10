@@ -86,8 +86,8 @@ public class OI {
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
-		Button b9 = new JoystickButton(logitech, 9);
-		b9.toggleWhenPressed(new ElevatorAscendCmd());
+		//Button b9 = new JoystickButton(logitech, 9);
+		//b9.toggleWhenPressed(new ElevatorAscendCmd());
 		
 		//Button b10 = new JoystickButton(logitech, 10);
 		//b10.toggleWhenPressed(new ElevatorDescendCmd());
