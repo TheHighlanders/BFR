@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorMidScaleCmd extends Command {
+public class ElevatorSwitchCmd extends Command {
 
 	private boolean lessThanDistance() {
 		
@@ -15,9 +15,9 @@ public class ElevatorMidScaleCmd extends Command {
 		
 	}
 	
-	double desiredDistance = 66.0;
+	double desiredDistance = 24.0;
 	
-    public ElevatorMidScaleCmd() {
+    public ElevatorSwitchCmd() {
        
     	requires(Robot.el);
     	

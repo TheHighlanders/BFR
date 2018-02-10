@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Top - 78 inches
  * Mid - 66 inches
  * Low - 54 inches
+ * Switch - 24 inches
  * 
  * TODO: Add encoders to detect how high the elevator is at a certain point.
  * 

@@ -3,10 +3,12 @@ package org.usfirst.frc.team6201.robot.subsystems;
 import org.usfirst.frc.team6201.robot.RobotMap;
 import org.usfirst.frc.team6201.robot.commands.ArcadeDriveCmd;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,10 +16,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 
-	private WPI_TalonSRX left1 = new WPI_TalonSRX(1);
-	private WPI_TalonSRX left2 = new WPI_TalonSRX(2);
-	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
-	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
+	public WPI_TalonSRX left1 = new WPI_TalonSRX(1);
+	public WPI_TalonSRX left2 = new WPI_TalonSRX(2);
+	public WPI_TalonSRX right1 = new WPI_TalonSRX(3);
+	public WPI_TalonSRX right2 = new WPI_TalonSRX(4);
 		
 	private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
@@ -39,6 +41,11 @@ public class DriveTrain extends Subsystem {
     	left2.setNeutralMode(NeutralMode.Brake);
     	right1.setNeutralMode(NeutralMode.Brake);
     	right2.setNeutralMode(NeutralMode.Brake);
+    	
+    	left1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	left2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	right1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	right2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
     
     }
     
@@ -90,9 +97,15 @@ public class DriveTrain extends Subsystem {
     	
     }
     
-    public void getGyroRate() {
+    public double getGyroRate() {
     	
-    	gyro.getRate();
+    	return gyro.getRate();
+    	
+    }
+    
+    public double getGyroAngle() {
+    	
+    	return gyro.getAngle();
     	
     }
     

@@ -28,8 +28,8 @@ public class RobotMap {
 	public static final int GRIPPER_RIGHT = 6;
 	
 	// Elevator
-	public static final int ELEVATOR_MOTOR1 = 1;
-	public static final int ELEVATOR_MOTOR2 = 2;
+	public static final int ELEVATOR_MOTOR1 = 0;
+	public static final int ELEVATOR_MOTOR2 = 1;
 	
 	// Sensors
 	public static final int ULTRASONIC = 2;
