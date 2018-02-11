@@ -9,6 +9,8 @@ package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
+import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -86,8 +88,17 @@ public class OI {
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
+		Button b7 = new JoystickButton(logitech, 7);
+		b7.whileHeld(new ElevatorAscendCmd());
+		
 		Button b9 = new JoystickButton(logitech, 9);
-		b9.toggleWhenPressed(new ElevatorAscendCmd());
+		b9.whileHeld(new ElevatorDescendCmd());
+		
+		Button b3 = new JoystickButton(logitech, 3);
+		b7.whileHeld(new GripperPullCmd());
+		
+		Button b4 = new JoystickButton(logitech, 4);
+		b4.whileHeld(new GripperPushCmd());
 		
 		//Button b10 = new JoystickButton(logitech, 10);
 		//b10.toggleWhenPressed(new ElevatorDescendCmd());

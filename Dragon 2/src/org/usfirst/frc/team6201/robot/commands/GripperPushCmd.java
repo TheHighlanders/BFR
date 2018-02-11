@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorAscendCmd extends Command {
+public class GripperPushCmd extends Command {
 
 
-    public ElevatorAscendCmd() {
+    public GripperPushCmd() {
        
-    	requires(Robot.el);
+    	requires(Robot.gi);
     	
     }
 
@@ -25,12 +25,9 @@ public class ElevatorAscendCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.el.maxSwitchTriggered()){
-    		Robot.el.ascend();
-    	}
-    	else{
-    		Robot.el.stop();
-    	}
+    	
+    		Robot.gi.push();
+   
     }
 
     // Make this return true when this Command no longer needs to run execute()

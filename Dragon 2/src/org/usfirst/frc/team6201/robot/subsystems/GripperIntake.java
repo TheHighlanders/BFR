@@ -5,6 +5,7 @@ import org.usfirst.frc.team6201.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,8 +19,8 @@ public class GripperIntake extends Subsystem {
 	
 	// Instantiates TalonSRX motor controllers at CAN Ports
 	// 5 and 6.
-    private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
-    private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
+	private VictorSP gripleft = new VictorSP(RobotMap.GRIPPER_LEFT);
+    private VictorSP gripright = new VictorSP(RobotMap.GRIPPER_RIGHT);
 	
     /**
      * Ultrasonic sets up the ultrasonic sensor to be read as analog input.
@@ -33,9 +34,7 @@ public class GripperIntake extends Subsystem {
      * Constructor, sets up motors and ultrasonic sensor.
      */
     public GripperIntake() {
-    	
-    	//leftIntake = new WPI_TalonSRX(RobotMap.GRIPPER_LEFT);
-    	//rightIntake = new WPI_TalonSRX(RobotMap.GRIPPER_RIGHT);
+   
     	
     	ultrasonic = new AnalogInput(RobotMap.ULTRASONIC);
     	
@@ -72,6 +71,34 @@ public class GripperIntake extends Subsystem {
     	}
     	
     }
+    
+    /**
+	 *  sucks in or maybe ejects out
+	 */
+   public void pull() {
+   	
+    gripleft.set(0.3);
+   	gripright.set(-0.3);
+   	
+   }
+   
+   /**
+    * ejects out or maybe sucks in
+    */
+   public void push() {
+   	
+	   gripleft.set(-0.3);
+	   gripright.set(0.3);
+   }
+   
+   /**
+    * Sets gripper motor speeds to 0
+    */
+   public void stop() {
+   	
+	   gripleft.set(0);
+	   gripright.set(0);
+   }
     
     public void initDefaultCommand() {
     }

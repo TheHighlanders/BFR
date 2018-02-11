@@ -28,8 +28,8 @@ public class Elevator extends Subsystem {
     
     // Instantiates TalonSRX motor controllers at CAN ports
     // 7 and 8.
-    private VictorSP elevator = new VictorSP(RobotMap.ELEVATOR_MOTOR);
-          
+    private VictorSP elevator1 = new VictorSP(RobotMap.ELEVATOR_MOTOR1);
+    private VictorSP elevator2 = new VictorSP(RobotMap.ELEVATOR_MOTOR2);
     /**
      * Constructor, sets up motors and limit switches.
      */
@@ -84,7 +84,8 @@ public class Elevator extends Subsystem {
 	 */
     public void ascend() {
     	
-    	elevator.set(1);
+    	elevator1.set(0.5);
+    	elevator2.set(-0.5);
     	
     }
     
@@ -93,8 +94,8 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	elevator.set(-1);
-    	
+    	elevator1.set(-0.5);
+    	elevator2.set(0.5);
     }
     
     /**
@@ -102,8 +103,8 @@ public class Elevator extends Subsystem {
      */
     public void stop() {
     	
-    	elevator.set(0);
-    	
+    	elevator1.set(0);
+    	elevator2.set(0);
     }
 
 	protected void initDefaultCommand() {
