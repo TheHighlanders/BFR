@@ -24,10 +24,10 @@ public class RobotMap {
 	public static final int RIGHT_DRIVE2 = 4;
 	
 	// Gripper
-	public static final int GRIPPER_LEFT = 2;
-	public static final int GRIPPER_RIGHT = 3;
+	public static final int GRIPPER_LEFT = 3;
+	public static final int GRIPPER_RIGHT = 4;
 	
-	// Elevator
+	// Elevator (ignore for now)
 	public static final int ELEVATOR_MOTOR1 = 0;
 	public static final int ELEVATOR_MOTOR2 = 1;
 	

@@ -95,7 +95,7 @@ public class OI {
 		b9.whileHeld(new ElevatorDescendCmd());
 		
 		Button b3 = new JoystickButton(logitech, 3);
-		b7.whileHeld(new GripperPullCmd());
+		b3.whileHeld(new GripperPullCmd());
 		
 		Button b4 = new JoystickButton(logitech, 4);
 		b4.whileHeld(new GripperPushCmd());

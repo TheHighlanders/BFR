@@ -40,7 +40,7 @@ public class GripperPushCmd extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	
-    	Robot.el.stop();
+    	Robot.gi.stop();
     	
     }
 
