@@ -48,8 +48,8 @@ public class ArcadeDriveCmd extends Command {
     	double joystickY = Robot.oi.getYAxisOfArcade();
     	double joystickSlider = 0.5 * (1 + (-1 * Robot.oi.getSliderAxisOfArcade()));
     	
-    	joystickX = linearElevatorScale(Robot.el.getEncoderDistance());
-    	joystickY = linearElevatorScale(Robot.el.getEncoderDistance());
+    	//joystickX = linearElevatorScale(Robot.el.getEncoderDistance());
+    //	joystickY = linearElevatorScale(Robot.el.getEncoderDistance());
     	
     	tanTurn = scaledValTan(joystickX * joystickSlider, TANDOMAIN_X);
     	tanPower = scaledValTan(joystickY * joystickSlider, TANDOMAIN_Y);
