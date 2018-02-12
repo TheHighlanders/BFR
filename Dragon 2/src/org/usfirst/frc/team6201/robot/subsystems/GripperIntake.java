@@ -1,10 +1,12 @@
 package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
+import org.usfirst.frc.team6201.robot.commands.CubeEjectCmd;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,8 +20,8 @@ public class GripperIntake extends Subsystem {
 	
 	// Instantiates TalonSRX motor controllers at CAN Ports
 	// 5 and 6.
-    private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
-    private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
+    private VictorSP leftIntake = new VictorSP(0);
+    private VictorSP rightIntake = new VictorSP(1);
 	
     /**
      * Ultrasonic sets up the ultrasonic sensor to be read as analog input.
@@ -37,11 +39,8 @@ public class GripperIntake extends Subsystem {
      */
     public GripperIntake() {
     	
-    	leftIntake = new WPI_TalonSRX(RobotMap.GRIPPER_LEFT);
-    	rightIntake = new WPI_TalonSRX(RobotMap.GRIPPER_RIGHT);
-    	
-    	leftIntake.configOpenloopRamp(1, 0);
-    	rightIntake.configOpenloopRamp(1, 0);
+    	leftIntake = new VictorSP(RobotMap.GRIPPER_LEFT);
+    	rightIntake = new VictorSP(RobotMap.GRIPPER_RIGHT);
     	
     	ultrasonic = new AnalogInput(RobotMap.ULTRASONIC);
     	
@@ -61,7 +60,7 @@ public class GripperIntake extends Subsystem {
     	
     	// checks if the distance from the target is both less than or equal to 2.5 feet
     	// and if the distance from the target is greater than 3 inches
-    	if(targetDistance <= startDistance && targetDistance > stopDistance) {
+    	if(targetDistance <= startDistance && targetDistance > stopDistance && CubeEjectCmd.cubeEject) {
     		
     		// if yes, set motor speed to 1
     		//leftIntake.set(1.0);
