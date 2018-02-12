@@ -19,8 +19,8 @@ public class GripperIntake extends Subsystem {
 	
 	// Instantiates TalonSRX motor controllers at CAN Ports
 	// 5 and 6.
-	private VictorSP gripleft = new VictorSP(RobotMap.GRIPPER_LEFT);
-    private VictorSP gripright = new VictorSP(RobotMap.GRIPPER_RIGHT);
+	private VictorSP gripLeft = new VictorSP(RobotMap.GRIPPER_LEFT);
+    private VictorSP gripRight = new VictorSP(RobotMap.GRIPPER_RIGHT);
 	
     /**
      * Ultrasonic sets up the ultrasonic sensor to be read as analog input.
@@ -59,14 +59,14 @@ public class GripperIntake extends Subsystem {
     	if(targetDistance <= startDistance && targetDistance > stopDistance) {
     		
     		// if yes, set motor speed to 1
-    		//leftIntake.set(1.0);
-    		//rightIntake.set(-1.0);
+    		gripLeft.set(1.0);
+    		gripRight.set(-1.0);
     		
     	} else {
     		
     		// if no, set motor speed to 0
-    		//leftIntake.set(0.0);
-    		//rightIntake.set(0.0);
+    		gripLeft.set(0.0);
+    		gripRight.set(0.0);
     		
     	}
     	
@@ -77,8 +77,8 @@ public class GripperIntake extends Subsystem {
 	 */
    public void pull() {
    	
-    gripleft.set(0.3);
-   	gripright.set(-0.3);
+    gripLeft.set(0.3);
+   	gripRight.set(-0.3);
    	
    }
    
@@ -87,8 +87,8 @@ public class GripperIntake extends Subsystem {
     */
    public void push() {
    	
-	   gripleft.set(-0.3);
-	   gripright.set(0.3);
+	   gripLeft.set(-0.3);
+	   gripRight.set(0.3);
    }
    
    /**
@@ -96,8 +96,8 @@ public class GripperIntake extends Subsystem {
     */
    public void stop() {
    	
-	   gripleft.set(0);
-	   gripright.set(0);
+	   gripLeft.set(0);
+	   gripRight.set(0);
    }
     
     public void initDefaultCommand() {
