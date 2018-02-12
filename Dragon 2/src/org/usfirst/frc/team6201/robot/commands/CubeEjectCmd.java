@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CubeEjectCmd extends Command {
 
+	public static boolean cubeEject = false;
+	
     public CubeEjectCmd() {
        
     	requires(Robot.gi);
@@ -25,6 +27,8 @@ public class CubeEjectCmd extends Command {
     	
     	Robot.gi.eject();
     	
+    	cubeEject = true;
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,6 +41,8 @@ public class CubeEjectCmd extends Command {
     	
     	Robot.gi.stop();
     	Robot.el.descend();
+    	
+    	cubeEject = false;
     	
     }
 
