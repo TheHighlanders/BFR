@@ -19,7 +19,7 @@ public class GripperIntake extends Subsystem {
 	// Instantiates TalonSRX motor controllers at CAN Ports
 	// 5 and 6.
     private WPI_TalonSRX leftIntake = new WPI_TalonSRX(5);
-    private WPI_TalonSRX rightIntake = new WPI_TalonSRX(6);
+    private WPI_TalonSRX rightIntake = new WPI_TalonSRX(7);
 	
     /**
      * Ultrasonic sets up the ultrasonic sensor to be read as analog input.

@@ -2,9 +2,10 @@ package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -43,8 +44,8 @@ public class Elevator extends Subsystem {
     
     // Instantiates VictorSP motor controllers at PWM ports
     // 1 and 2.
-    private VictorSP elevator1 = new VictorSP(RobotMap.ELEVATOR_MOTOR1);
-    private VictorSP elevator2 = new VictorSP(RobotMap.ELEVATOR_MOTOR2);
+    private WPI_TalonSRX elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
+    private WPI_TalonSRX elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
           
     /**
      * Constructor, sets up motors and limit switches.
