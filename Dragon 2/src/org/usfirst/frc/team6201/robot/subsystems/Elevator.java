@@ -28,7 +28,7 @@ public class Elevator extends Subsystem {
     
     public Counter encoder = new Counter(magEnc);
     
-    private static final double WHEEL_DIAMETER = 2.5;
+    private static final double WHEEL_DIAMETER = 4;
     private static final double PULSE_PER_REVOLUTION = 1;
     private static final double ENCODER_GEAR_RATIO = 1;
     private static final double GEAR_RATIO = 12 / 1;
@@ -48,7 +48,8 @@ public class Elevator extends Subsystem {
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
     	
-    	encoder.setMaxPeriod(0.1);
+    	//play around with this
+    	//encoder.setMaxPeriod(0.1);
     	encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
     	
     }
