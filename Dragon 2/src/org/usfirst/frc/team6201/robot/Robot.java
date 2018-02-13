@@ -121,6 +121,12 @@ public class Robot extends IterativeRobot {
 		DriverStation.reportWarning("Encoder Rate: " + el.getEncoderRate(), false);
 		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
 		
+		if(!(oi.getButton9()) && !(oi.getButton11())) {
+			
+			el.constantForce();
+			
+		}
+		
  		//gi.startWheels();
 		
 	}

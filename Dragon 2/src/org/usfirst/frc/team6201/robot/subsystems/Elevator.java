@@ -28,9 +28,9 @@ public class Elevator extends Subsystem {
 	
 	// Instantiates limit switches at DIO ports 0 and 1.
     public DigitalInput maxSwitch = new DigitalInput(0);
-    private DigitalInput minSwitch = new DigitalInput(1);
+    private DigitalInput minSwitch = new DigitalInput(2);
     
-    public DigitalInput magEnc = new DigitalInput(2);
+    public DigitalInput magEnc = new DigitalInput(1);
     
     public Counter encoder = new Counter(magEnc);
     
@@ -115,6 +115,13 @@ public class Elevator extends Subsystem {
     	
     }
     
+    public void constantForce() {
+    	
+    	elevator1.set(0.1);
+    	elevator2.set(-0.1);
+    
+    }
+    
 	/**
 	 * Extends the elevator at a speed of 0.75.
 	 */
@@ -130,12 +137,12 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	while(!minSwitchTriggered()) {
+    	//while(!minSwitchTriggered()) {
     	
-			elevator1.set(-1);
-	    	elevator2.set(1);
+			elevator1.set(-0.5);
+	    	elevator2.set(0.5);
 			
-    	}
+    //	}
 	    	
     }
     

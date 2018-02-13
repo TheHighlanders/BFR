@@ -25,21 +25,6 @@ public class ElevatorAscendCmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*if (Robot.el.magEncTriggered() && !lasttime){
-    		revs++;
-    		lasttime = true;
-    	}
-    	
-    	if(!Robot.el.magEncTriggered() && lasttime){
-    		lasttime = false;
-    	}
-    	
-    	if(Robot.el.maxSwitchTriggered()){
-    		Robot.el.ascend();
-    	}
-    	else{
-    		Robot.el.stop();
-    	}*/
     	
     	Robot.el.ascend();
     	
@@ -48,7 +33,7 @@ public class ElevatorAscendCmd extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.maxSwitchTriggered();
+        return false;
     
     }
 

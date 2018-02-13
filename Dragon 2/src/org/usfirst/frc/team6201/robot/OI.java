@@ -32,6 +32,8 @@ public class OI {
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
 	private Button b1 = new JoystickButton(logitech, 1);
+	private Button b9 = new JoystickButton(logitech, 9);
+	private Button b11 = new JoystickButton(logitech, 10);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -83,14 +85,24 @@ public class OI {
 		
 	}
 	
+	public boolean getButton9() {
+		
+		return b9.get();
+		
+	}
+	
+	public boolean getButton11() {
+		
+		return b11.get();
+		
+	}
+	
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
-		Button b9 = new JoystickButton(logitech, 9);
-		b9.toggleWhenPressed(new ElevatorAscendCmd());
+		b9.whileHeld(new ElevatorAscendCmd());
 		
-		//Button b10 = new JoystickButton(logitech, 10);
-		//b10.toggleWhenPressed(new ElevatorDescendCmd());
+		b11.whileHeld(new ElevatorDescendCmd());
 		
 		
 		
