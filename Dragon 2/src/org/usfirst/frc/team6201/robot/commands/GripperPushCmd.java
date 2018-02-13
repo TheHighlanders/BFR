@@ -41,6 +41,7 @@ public class GripperPushCmd extends Command {
     protected void end() {
     	
     	Robot.gi.stop();
+    	Robot.el.descend();
     	
     }
 

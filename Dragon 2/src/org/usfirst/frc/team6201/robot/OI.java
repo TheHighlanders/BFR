@@ -35,6 +35,14 @@ public class OI {
 	
 	private Button b1 = new JoystickButton(logitech, 1);
 	
+	Button b7 = new JoystickButton(logitech, 7);
+	
+	Button b9 = new JoystickButton(logitech, 9);
+	
+	Button b3 = new JoystickButton(logitech, 3);
+	
+	Button b4 = new JoystickButton(logitech, 4);
+	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
 	 * This has a range of -1 to 1. All the way to the right is +1.
@@ -88,16 +96,12 @@ public class OI {
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
-		Button b7 = new JoystickButton(logitech, 7);
 		b7.whileHeld(new ElevatorAscendCmd());
 		
-		Button b9 = new JoystickButton(logitech, 9);
 		b9.whileHeld(new ElevatorDescendCmd());
 		
-		Button b3 = new JoystickButton(logitech, 3);
 		b3.whileHeld(new GripperPullCmd());
 		
-		Button b4 = new JoystickButton(logitech, 4);
 		b4.whileHeld(new GripperPushCmd());
 		
 		//Button b10 = new JoystickButton(logitech, 10);
@@ -106,6 +110,17 @@ public class OI {
 		
 	}
 	
+	
+	public boolean getButton7() {
+		
+		return b7.get();
+		
+	}
+	public boolean getButton9() {
+		
+		return b9.get();
+		
+	}
 	
 
 }

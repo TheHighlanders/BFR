@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * start and stop the motors on the gripper when a cube is near and when a 
  * cube is actually in the gripper, respectively. 
  * 
+ * Start wheels may end up overriding the eject command
+ * 
  * @author Baxter Ellard
  */
 public class GripperIntake extends Subsystem {
@@ -29,6 +31,13 @@ public class GripperIntake extends Subsystem {
     
     // factor to convert sensor values to a distance in inches
     private static final double valueToInches = 0.125;
+    
+    // equivalent to 2.5 feet
+	private double startDistance = 30.0;
+	// distance at which we want the wheels to stop turning
+	private double stopDistance = 3.0;
+	
+	double targetDistance;
     
     /**
      * Constructor, sets up motors and ultrasonic sensor.
@@ -47,12 +56,9 @@ public class GripperIntake extends Subsystem {
     public void startWheels() {
     	
     	// distance from the sensor to the target
-    	double targetDistance = ultrasonic.getValue() * valueToInches;
+    	targetDistance = ultrasonic.getValue() * valueToInches;
     	// distance at which we want the wheels to start turning
-    	// equivalent to 2.5 feet
-    	double startDistance = 30.0;
-    	// distance at which we want the wheels to stop turning
-    	double stopDistance = 3.0;
+    	
     	
     	// checks if the distance from the target is both less than or equal to 2.5 feet
     	// and if the distance from the target is greater than 3 inches
@@ -77,8 +83,8 @@ public class GripperIntake extends Subsystem {
 	 */
    public void pull() {
    	
-    gripLeft.set(0.3);
-   	gripRight.set(-0.3);
+    gripLeft.set(1);
+   	gripRight.set(-1);
    	
    }
    
@@ -87,8 +93,8 @@ public class GripperIntake extends Subsystem {
     */
    public void push() {
    	
-	   gripLeft.set(-0.3);
-	   gripRight.set(0.3);
+	   gripLeft.set(-1);
+	   gripRight.set(1);
    }
    
    /**

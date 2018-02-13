@@ -2,6 +2,8 @@ package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -28,8 +30,8 @@ public class Elevator extends Subsystem {
     
     // Instantiates TalonSRX motor controllers at CAN ports
     // 7 and 8.
-    private VictorSP elevator1 = new VictorSP(RobotMap.ELEVATOR_MOTOR1);
-    private VictorSP elevator2 = new VictorSP(RobotMap.ELEVATOR_MOTOR2);
+    private WPI_TalonSRX elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
+    private WPI_TalonSRX elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
     /**
      * Constructor, sets up motors and limit switches.
      */
@@ -37,7 +39,6 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
-    
     	
     }
     
@@ -74,6 +75,13 @@ public class Elevator extends Subsystem {
     	
     }*/
     
+    public void constantForce() {
+    	
+    	elevator1.set(-0.1);
+    	elevator2.set(0.1);
+    	
+    }
+    
     /**
      * @return the current count of rotations. May be reset by calling reset()
      */
@@ -84,8 +92,8 @@ public class Elevator extends Subsystem {
 	 */
     public void ascend() {
     	
-    	elevator1.set(1);
-    	elevator2.set(-1);
+    	elevator1.set(-1);
+    	elevator2.set(1);
     	
     }
     
@@ -94,8 +102,8 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	elevator1.set(-1);
-    	elevator2.set(1);
+    	elevator1.set(0.3);
+    	elevator2.set(-0.3);
     }
     
     /**

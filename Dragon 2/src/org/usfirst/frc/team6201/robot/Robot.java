@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6201.robot;
 
+import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
@@ -116,6 +117,9 @@ public class Robot extends IterativeRobot {
 		DriverStation.reportWarning("Max Switch: " + Robot.el.maxSwitchTriggered(), false);
 		
  		//gi.startWheels();
+		if(!(oi.getButton7()) && !(oi.getButton9())){
+			el.constantForce();
+		}
 		
 	}
 
