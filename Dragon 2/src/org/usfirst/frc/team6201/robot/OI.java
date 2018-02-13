@@ -9,6 +9,9 @@ package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -32,6 +35,11 @@ public class OI {
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
 	private Button b1 = new JoystickButton(logitech, 1);
+	private Button b7 = new JoystickButton(logitech, 7);
+	private Button b9 = new JoystickButton(logitech, 9);
+	private Button b11 = new JoystickButton(logitech, 11);
+	private Button b12 = new JoystickButton(logitech, 12);
+	private Button b10 = new JoystickButton(logitech, 10);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -83,15 +91,47 @@ public class OI {
 		
 	}
 	
+	public boolean getButton10() {
+		
+		return b10.get();
+		
+	}
+	
+	public boolean getButton12() {
+		
+		return b12.get();
+		
+	}
+	
+	public boolean getButton7() {
+		
+		return b7.get();
+		
+	}
+	
+	public boolean getButton9() {
+		
+		return b9.get();
+		
+	}
+	
+	public boolean getButton11() {
+		
+		return b11.get();
+		
+	}
+	
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
-		Button b9 = new JoystickButton(logitech, 9);
-		b9.toggleWhenPressed(new ElevatorAscendCmd());
 		
-		//Button b10 = new JoystickButton(logitech, 10);
-		//b10.toggleWhenPressed(new ElevatorDescendCmd());
+		b10.whileHeld(new ElevatorAscendCmd());
 		
+		b9.whileHeld(new ElevatorDescendCmd());
+		
+		//b7.whenPressed(new ElevatorTopScaleCmd());
+		//b9.whenPressed(new ElevatorMidScaleCmd());
+		//b11.whenPressed(new ElevatorLowScaleCmd());
 		
 		
 		

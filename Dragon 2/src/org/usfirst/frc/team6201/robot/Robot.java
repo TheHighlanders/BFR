@@ -123,6 +123,12 @@ public class Robot extends IterativeRobot {
 		
  		//gi.startWheels();
 		
+		if(!(oi.getButton7()) && !(oi.getButton9())) {
+			
+			el.constantForce();
+			
+		}
+		
 	}
 
 	/**

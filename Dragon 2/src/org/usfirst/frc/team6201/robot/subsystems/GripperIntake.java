@@ -77,12 +77,19 @@ public class GripperIntake extends Subsystem {
     
     public void eject() {
     	
-    	while(targetDistance < 16) {
+    	//while(targetDistance < 16) {
     	
     		leftIntake.set(-1.0);
     		rightIntake.set(1.0);
     		
-    	}
+    	//}
+    	
+    }
+    
+    public void takeIn() {
+    	
+    	leftIntake.set(1.0);
+    	rightIntake.set(-1.0);
     	
     }
     
