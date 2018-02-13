@@ -41,4 +41,9 @@ public class RobotMap {
 	public static final int LOGITECH_ROTATE_AXIS = 2;
 	public static final int LOGITECH_SLIDER_AXIS = 3;
 	
+	//X Box
+	public static final int XBOX = 2;
+	public static final int XBOX_Z_AXIS = 2;
+	
+	
 }

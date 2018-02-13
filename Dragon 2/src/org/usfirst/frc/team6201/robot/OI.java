@@ -16,6 +16,7 @@ import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This provides the framework to connect the DriverStation to the Robot both for getting values from the joystick(s), 
@@ -23,7 +24,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * 
  * 
  * @author Baxter Ellard
- * @author David Matthews
  */
 public class OI {
 	
@@ -40,6 +40,17 @@ public class OI {
 	private Button b11 = new JoystickButton(logitech, 11);
 	private Button b12 = new JoystickButton(logitech, 12);
 	private Button b10 = new JoystickButton(logitech, 10);
+	
+	
+	/**
+	 * Create an object out of our XBox controller
+	 * This allows us to get the axis and state the buttons
+	 * Initialized with the USB devices plugged into the robot
+	 */
+	private XboxController xbox = new XboxController(RobotMap.XBOX);
+	
+	private Button lb = new JoystickButton(xbox,5);
+	private Button rb = new JoystickButton(xbox, 6);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -82,6 +93,7 @@ public class OI {
 		
 	}
 	
+	
 	/**
 	 * @return True if button 1 is pressed, false otherwise.
 	 */
@@ -121,6 +133,15 @@ public class OI {
 		
 	}
 	
+	//X Box buttons
+	public boolean getButtonlb() {
+		return lb.get();
+	}
+	
+	public boolean getButtonrb() {
+		return rb.get();
+	}
+	
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
@@ -128,6 +149,13 @@ public class OI {
 		b10.whileHeld(new ElevatorAscendCmd());
 		
 		b9.whileHeld(new ElevatorDescendCmd());
+		
+		//xbox controller
+		//brings Elevator to the height of the scale and the bottom
+		lb.whenPressed(new ElevatorLowScaleCmd());
+		
+		rb.whenPressed(new ElevatorTopScaleCmd());
+		
 		
 		//b7.whenPressed(new ElevatorTopScaleCmd());
 		//b9.whenPressed(new ElevatorMidScaleCmd());
