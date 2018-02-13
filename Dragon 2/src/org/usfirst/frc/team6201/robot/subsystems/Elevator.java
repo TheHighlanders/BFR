@@ -27,15 +27,19 @@ public class Elevator extends Subsystem {
     public DigitalInput magEnc = new DigitalInput(1);
     
     public Counter encoder = new Counter(magEnc);
+   
     
-    private static final double WHEEL_DIAMETER = 4;
+    private static final double WHEEL_DIAMETER = 4;/*
     private static final double PULSE_PER_REVOLUTION = 1;
-    private static final double ENCODER_GEAR_RATIO = 1;
     private static final double GEAR_RATIO = 12 / 1;
     private static final double FUDGE_FACTOR = 1.0;
     
-    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSE_PER_REVOLUTION / ENCODER_GEAR_RATIO / GEAR_RATIO * FUDGE_FACTOR;
+    //Distance per pulse might just be circumference
+    //Every twelfth of the circumference (pi/6 rad) is one rotation of the internal motor
+    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSE_PER_REVOLUTION / GEAR_RATIO * FUDGE_FACTOR;
+    */
     
+    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER;
     // Instantiates TalonSRX motor controllers at CAN ports
     // 7 and 8.
     private WPI_TalonSRX elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
@@ -128,8 +132,8 @@ public class Elevator extends Subsystem {
 	 */
     public void ascend() {
     	
-    	elevator1.set(-1);
-    	elevator2.set(1);
+    	elevator1.set(-0.75);
+    	elevator2.set(0.75);
     	
     }
     

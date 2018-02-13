@@ -17,7 +17,7 @@ public class ElevatorDescendCmd extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.el.encoder.reset();
     	
     	
     }
@@ -38,6 +38,7 @@ public class ElevatorDescendCmd extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
     	
     	Robot.el.stop();
     	

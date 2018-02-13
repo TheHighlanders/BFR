@@ -112,8 +112,8 @@ public class Robot extends IterativeRobot {
 		
 		Scheduler.getInstance().run();
 		
-		DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
-		DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
+		//DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
+		//DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
 		DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
 		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
 		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
