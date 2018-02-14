@@ -80,6 +80,12 @@ public class OI {
 	}
 	
 	public OI() {
+		
+		for(int i = 1; i < buttons.length; i++) {
+			
+			buttons[i] = new JoystickButton(logitech, i);
+			
+		}
 	
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
