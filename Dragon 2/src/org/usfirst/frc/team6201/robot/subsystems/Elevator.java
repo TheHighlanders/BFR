@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6201.robot.subsystems;
 
 import org.usfirst.frc.team6201.robot.RobotMap;
+import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -51,6 +52,9 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
+    	
+    	elevator1.configOpenloopRamp(1/2, 0);
+    	elevator2.configOpenloopRamp(1/2, 0);
     	
     	//play around with this
     	//encoder.setMaxPeriod(0.1);
@@ -117,8 +121,8 @@ public class Elevator extends Subsystem {
     
     public void constantForce() {
     	
-    	elevator1.set(-0.1);
-    	elevator2.set(0.1);
+    	elevator1.set(-0.15);
+    	elevator2.set(0.15);
     	
     }
     
@@ -132,8 +136,8 @@ public class Elevator extends Subsystem {
 	 */
     public void ascend() {
     	
-    	elevator1.set(-1);
-    	elevator2.set(1);
+    	elevator1.set(-0.9);
+    	elevator2.set(9);
     	
     }
     
@@ -142,8 +146,9 @@ public class Elevator extends Subsystem {
      */
     public void descend() {
     	
-    	elevator1.set(0.3);
-    	elevator2.set(-0.3);
+    	elevator1.set(0.5);
+    	elevator2.set(-0.5);
+    	
     }
     
     /**
@@ -156,6 +161,8 @@ public class Elevator extends Subsystem {
     }
 
 	protected void initDefaultCommand() {
+		
+		setDefaultCommand(new ElevatorConstantForceCmd());
 		
 	}
         

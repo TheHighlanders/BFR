@@ -9,6 +9,7 @@ package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
@@ -35,14 +36,7 @@ public class OI {
 	 */
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
-	private Button b1 = new JoystickButton(logitech, 1);
-	
-	Button b7 = new JoystickButton(logitech, 7);
-	Button b9 = new JoystickButton(logitech, 9);
-	Button b3 = new JoystickButton(logitech, 3);
-	Button b4 = new JoystickButton(logitech, 4);
-	Button b11 = new JoystickButton(logitech, 11);
-	Button b12 = new JoystickButton(logitech, 12);
+	private Button[] buttons = new Button[13];
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -85,56 +79,17 @@ public class OI {
 		
 	}
 	
-	/**
-	 * @return True if button 1 is pressed, false otherwise.
-	 */
-	public boolean getButton1() {
-		
-		return b1.get();
-		
-	}
-	
-	public boolean getButton7() {
-		
-		return b7.get();
-		
-	}
-	
-	public boolean getButton9() {
-		
-		return b9.get();
-		
-	}
-	
-	public boolean getButton11() {
-		
-		return b11.get();
-		
-	}
-	
-	public boolean getButton12() {
-		
-		return b12.get();
-		
-	}
-	
 	public OI() {
+	
+		buttons[7].whenPressed(new ElevatorTopScaleCmd());
+		buttons[9].whenPressed(new ElevatorMidScaleCmd());
+		buttons[11].whenPressed(new ElevatorLowScaleCmd());
 		
-		// starts the process of ascending to maximum elevator height
-		b7.whileHeld(new ElevatorAscendCmd());
+		buttons[5].whileHeld(new ElevatorAscendCmd());
+		buttons[6].whileHeld(new ElevatorDescendCmd());
 		
-		b9.whileHeld(new ElevatorDescendCmd());
-		
-		b3.whileHeld(new GripperPullCmd());
-		
-		b4.whileHeld(new GripperPushCmd());
-		
-		b11.whileHeld(new ElevatorTopScaleCmd());
-		b12.whileHeld(new ElevatorMidScaleCmd());
-		
-		//Button b10 = new JoystickButton(logitech, 10);
-		//b10.toggleWhenPressed(new ElevatorDescendCmd());
-		
+		buttons[3].whileHeld(new GripperPullCmd());
+		buttons[4].whileHeld(new GripperPushCmd());
 		
 	}
 
