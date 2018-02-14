@@ -32,7 +32,7 @@ public class ElevatorTopScaleCmd extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.getEncoderRevs() >= 7;
+        return Robot.el.getEncoderRevs() >= 14;
         
     }
 
