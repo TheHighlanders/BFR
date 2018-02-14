@@ -119,6 +119,9 @@ public class Robot extends IterativeRobot {
 		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
 		
  		//gi.startWheels();
+		if(!(oi.getButton7()) && !(oi.getButton9()) && !(oi.getButton11()) && !(oi.getButton12())){
+			el.constantForce();
+		}
 		
 	}
 
