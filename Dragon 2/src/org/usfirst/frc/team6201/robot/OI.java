@@ -14,6 +14,7 @@ import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
+import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -86,6 +87,8 @@ public class OI {
 			buttons[i] = new JoystickButton(logitech, i);
 			
 		}
+		
+		buttons[2].whenPressed(new TurnAngleCmd(90, 5));
 	
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());

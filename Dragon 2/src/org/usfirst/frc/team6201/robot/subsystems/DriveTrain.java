@@ -131,9 +131,9 @@ public class DriveTrain extends Subsystem {
     /**
 	 * @return the current rate of turning in degrees per second
 	 */
-    public void getGyroRate() {
+    public double getGyroRate() {
     	
-    	gyro.getRate();
+    	return gyro.getRate();
     	
     }
     
@@ -144,9 +144,9 @@ public class DriveTrain extends Subsystem {
 	 *         over time.
 	 * 
 	 */
-    public void getGyroAngle() {
+    public double getGyroAngle() {
     	
-    	gyro.getAngle();
+    	return gyro.getAngle();
     	
     }
     
