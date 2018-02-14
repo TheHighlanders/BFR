@@ -78,6 +78,12 @@ public class GripperIntake extends Subsystem {
     	
     }
     
+    public double getUltrasonicDistance() {
+    	
+    	return ultrasonic.getValue() * valueToInches;
+    	
+    }
+    
     /**
 	 *  sucks in or maybe ejects out
 	 */

@@ -117,6 +117,7 @@ public class Robot extends IterativeRobot {
 		DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
 		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
 		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
+		DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
 		
  		//gi.startWheels();
 		
