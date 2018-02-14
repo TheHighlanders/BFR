@@ -132,8 +132,8 @@ public class Elevator extends Subsystem {
 	 */
     public void ascend() {
     	
-    	elevator1.set(-0.75);
-    	elevator2.set(0.75);
+    	elevator1.set(-1);
+    	elevator2.set(1);
     	
     }
     
