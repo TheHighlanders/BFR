@@ -96,7 +96,6 @@ public class OI {
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());
-		buttons[12].whenPressed(new ElevatorDescendCmd());
 		
 		buttons[3].whileHeld(new GripperPullCmd());
 		buttons[4].whileHeld(new GripperPushCmd());

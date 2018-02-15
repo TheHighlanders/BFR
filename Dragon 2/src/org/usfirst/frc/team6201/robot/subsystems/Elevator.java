@@ -23,7 +23,7 @@ public class Elevator extends Subsystem {
 	
 	// Instantiates limit switches at DIO ports 0 and 1.
     public DigitalInput maxSwitch = new DigitalInput(0);
-    private DigitalInput minSwitch = new DigitalInput(2);
+    //private DigitalInput minSwitch = new DigitalInput(1);
     
     public DigitalInput magEnc = new DigitalInput(1);
     
@@ -89,11 +89,11 @@ public class Elevator extends Subsystem {
      * 		   of this when using the method in the isFinished() methods of
      *         commands. 
      */
-    public boolean minSwitchTriggered() {
+    /*public boolean minSwitchTriggered() {
     	
     	return minSwitch.get();
     	
-    }
+    }*/
     
     public int getEncoderRevs() {
     	
