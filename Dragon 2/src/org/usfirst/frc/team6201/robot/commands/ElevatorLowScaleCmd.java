@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorLowScaleCmd extends Command {
 
+<<<<<<< HEAD
 	private boolean lessThanDistance() {
 		
 		return Robot.el.getEncoderDistance() < desiredDistance;
@@ -17,19 +18,25 @@ public class ElevatorLowScaleCmd extends Command {
 	
 	double desiredDistance = 54.0;
 	
+=======
+>>>>>>> MaxTesting
     public ElevatorLowScaleCmd() {
-       
+
     	requires(Robot.el);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	Robot.el.encoder.reset();
+    	    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+<<<<<<< HEAD
     	if(Robot.el.getEncoderDistance() == desiredDistance) {
     		
     		end();
@@ -43,13 +50,16 @@ public class ElevatorLowScaleCmd extends Command {
     			Robot.el.descend();
 		
     	}
+=======
+    	Robot.el.ascend();
+>>>>>>> MaxTesting
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.getEncoderDistance() == desiredDistance;
+        return Robot.el.getEncoderRevs() >= 8;
         
     }
 
@@ -67,5 +77,8 @@ public class ElevatorLowScaleCmd extends Command {
     	end();
     	
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> MaxTesting
 }

@@ -97,12 +97,14 @@ public class DriveTrain extends Subsystem {
     	
     }
     
+
     public double getGyroRate() {
     	
     	return gyro.getRate();
     	
     }
     
+
     public double getGyroAngle() {
     	
     	return gyro.getAngle();

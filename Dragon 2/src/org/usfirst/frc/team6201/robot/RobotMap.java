@@ -24,12 +24,18 @@ public class RobotMap {
 	public static final int RIGHT_DRIVE2 = 4;
 	
 	// Gripper
-	public static final int GRIPPER_LEFT = 5;
-	public static final int GRIPPER_RIGHT = 6;
+	public static final int GRIPPER_LEFT = 0;
+	public static final int GRIPPER_RIGHT = 1;
 	
+<<<<<<< HEAD
 	// Elevator
 	public static final int ELEVATOR_MOTOR1 = 0;
 	public static final int ELEVATOR_MOTOR2 = 1;
+=======
+	// Elevator (ignore for now)
+	public static final int ELEVATOR_MOTOR1 = 5;
+	public static final int ELEVATOR_MOTOR2 = 7;
+>>>>>>> MaxTesting
 	
 	// Sensors
 	public static final int ULTRASONIC = 2;

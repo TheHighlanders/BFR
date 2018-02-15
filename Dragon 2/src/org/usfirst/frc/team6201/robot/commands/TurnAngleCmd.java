@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
+<<<<<<< HEAD
  * The interface between the robot code and the actuators and sensors involved
  * in moving the robot. Right now this is just the motors and gyro, but this
  * will probably grow to include encoders.
@@ -15,11 +16,18 @@ import edu.wpi.first.wpilibj.command.Command;
  * 
  * @author Baxter Ellard
  * @author David Matthews
+=======
+ *
+>>>>>>> MaxTesting
  */
 public class TurnAngleCmd extends Command {
 	
 	/**
+<<<<<<< HEAD
 	 * turnSpeed is the speed that the robot turns at. depends on currentAngleOffset 
+=======
+	 * turnSpeed is the speed that the robot turns at depends on currentAngleOffset 
+>>>>>>> MaxTesting
 	 */
 	private double turnSpeed;
 	/**
@@ -75,11 +83,19 @@ public class TurnAngleCmd extends Command {
 		currentAngleOffset = targetRotation - Robot.dt.getGyroAngle();
 		
 		if (currentAngleOffset >= MAXSPEEDTHRESH){
+<<<<<<< HEAD
 			Robot.dt.driveLR(0.8,-0.8);
 		}
 		
 		else if (currentAngleOffset <= -MAXSPEEDTHRESH){
 			Robot.dt.driveLR(-0.8,0.8);
+=======
+			Robot.dt.driveLR(1,-1);
+		}
+		
+		else if (currentAngleOffset <= -MAXSPEEDTHRESH){
+			Robot.dt.driveLR(-1,1);
+>>>>>>> MaxTesting
 		}
 	
 		else { 
@@ -92,7 +108,10 @@ public class TurnAngleCmd extends Command {
 	}
 
 	protected boolean isFinished() {
+<<<<<<< HEAD
 		DriverStation.reportWarning("\n\nGyro Angle is, in isFinish, right now: " + Robot.dt.getGyroAngle() + "\nGyroRate is: " + Robot.dt.getGyroRate(), false);
+=======
+>>>>>>> MaxTesting
 		return ((Math.abs(currentAngleOffset) < acceptedAngleOffset) && (Math.abs(Robot.dt.getGyroRate()) <= 10));
 	
 	}

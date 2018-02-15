@@ -9,6 +9,12 @@ package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
+import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
+import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -31,7 +37,7 @@ public class OI {
 	 */
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
-	private Button b1 = new JoystickButton(logitech, 1);
+	private Button[] buttons = new Button[13];
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -74,27 +80,35 @@ public class OI {
 		
 	}
 	
-	/**
-	 * @return True if button 1 is pressed, false otherwise.
-	 */
-	public boolean getButton1() {
+	public OI() {
 		
-		return b1.get();
+		for(int i = 1; i < buttons.length; i++) {
+			
+			buttons[i] = new JoystickButton(logitech, i);
+			
+		}
 		
-	}
+		buttons[2].whenPressed(new TurnAngleCmd(90, 5));
 	
+<<<<<<< HEAD
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
 		//Button b9 = new JoystickButton(logitech, 9);
 		//b9.toggleWhenPressed(new ElevatorAscendCmd());
+=======
+		buttons[7].whenPressed(new ElevatorTopScaleCmd());
+		buttons[9].whenPressed(new ElevatorMidScaleCmd());
+		buttons[11].whenPressed(new ElevatorLowScaleCmd());
+>>>>>>> MaxTesting
 		
-		//Button b10 = new JoystickButton(logitech, 10);
-		//b10.toggleWhenPressed(new ElevatorDescendCmd());
+		buttons[5].whileHeld(new ElevatorAscendCmd());
+		buttons[6].whileHeld(new ElevatorDescendCmd());
+		buttons[12].whenPressed(new ElevatorDescendCmd());
 		
+		buttons[3].whileHeld(new GripperPullCmd());
+		buttons[4].whileHeld(new GripperPushCmd());
 		
 	}
-	
-	
 
 }

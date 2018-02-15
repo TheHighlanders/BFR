@@ -18,18 +18,26 @@ public class ElevatorTopScaleCmd extends Command {
 	double desiredDistance = 78.0;
 	
     public ElevatorTopScaleCmd() {
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> MaxTesting
     	requires(Robot.el);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	    	
+    	Robot.el.encoder.reset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+<<<<<<< HEAD
     	if(Robot.el.getEncoderDistance() == desiredDistance) {
     		
     		end();
@@ -39,13 +47,20 @@ public class ElevatorTopScaleCmd extends Command {
     			Robot.el.ascend();
     		
     	}
+=======
+    	Robot.el.ascend();
+>>>>>>> MaxTesting
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
+<<<<<<< HEAD
         return Robot.el.getEncoderDistance() == desiredDistance;
+=======
+        return Robot.el.getEncoderRevs() >= 13;
+>>>>>>> MaxTesting
         
     }
 
