@@ -51,7 +51,7 @@ public class AutoTravelToScale extends Command {
     	Robot.dt.right1.configForwardSoftLimitEnable(true, 10);
     	Robot.dt.right2.configForwardSoftLimitEnable(true, 10);
     	
-    	Robot.dt.driveLR(1, 1);
+    	//Robot.dt.driveLR(1, 1);
     	
     }
 
