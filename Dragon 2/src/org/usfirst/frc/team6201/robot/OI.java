@@ -93,6 +93,7 @@ public class OI {
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		buttons[11].whenPressed(new ElevatorLowScaleCmd());
+		buttons[12].whenPressed(new ElevatorDescendCmd());
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());
