@@ -114,24 +114,11 @@ public class Robot extends IterativeRobot {
 		
 		Scheduler.getInstance().run();
 		
-<<<<<<< HEAD
-		DriverStation.reportWarning("DIO Port 0: " + el.maxSwitch.get() , false);
-		DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
-		DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
-		DriverStation.reportWarning("Revs: " + el.getEncoderRevs(), false);
-		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
-		DriverStation.reportWarning("Encoder Rate: " + el.getEncoderRate(), false);
-		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
-=======
 		//DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
 		//DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
 		DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
 		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
 		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
-		DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
->>>>>>> MaxTesting
-		
- 		//gi.startWheels();
 		
 	}
 

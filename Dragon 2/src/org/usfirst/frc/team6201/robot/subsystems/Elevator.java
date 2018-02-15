@@ -3,16 +3,13 @@ package org.usfirst.frc.team6201.robot.subsystems;
 import org.usfirst.frc.team6201.robot.RobotMap;
 import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
 
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.VictorSP;
-=======
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
->>>>>>> MaxTesting
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -35,34 +32,12 @@ public class Elevator extends Subsystem {
 	
 	// Instantiates limit switches at DIO ports 0 and 1.
     public DigitalInput maxSwitch = new DigitalInput(0);
-<<<<<<< HEAD
-    private DigitalInput minSwitch = new DigitalInput(1);
     
-    public DigitalInput magEnc = new DigitalInput(2);
+    public DigitalInput magEnc = new DigitalInput(1);
     
     public Counter encoder = new Counter(magEnc);
-=======
     private DigitalInput minSwitch = new DigitalInput(2);
->>>>>>> MaxTesting
-    
-    private static final double WHEEL_DIAMETER = 2.5;
-    private static final double PULSE_PER_REVOLUTION = 1;
-    private static final double ENCODER_GEAR_RATIO = 1;
-    private static final double GEAR_RATIO = 12 / 1;
-    private static final double FUDGE_FACTOR = 1.0;
-    
-<<<<<<< HEAD
-    private final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSE_PER_REVOLUTION / ENCODER_GEAR_RATIO / GEAR_RATIO * FUDGE_FACTOR;
-    
-    // Instantiates VictorSP motor controllers at PWM ports
-    // 1 and 2.
-    private VictorSP elevator1 = new VictorSP(RobotMap.ELEVATOR_MOTOR1);
-    private VictorSP elevator2 = new VictorSP(RobotMap.ELEVATOR_MOTOR2);
-          
-=======
-    public Counter encoder = new Counter(magEnc);
-   
-    
+ 
     private static final double WHEEL_DIAMETER = 4;/*
     private static final double PULSE_PER_REVOLUTION = 1;
     private static final double GEAR_RATIO = 12 / 1;
@@ -78,7 +53,6 @@ public class Elevator extends Subsystem {
     // 7 and 8.
     private WPI_TalonSRX elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     private WPI_TalonSRX elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
->>>>>>> MaxTesting
     /**
      * Constructor, sets up motors and limit switches.
      */
@@ -86,17 +60,11 @@ public class Elevator extends Subsystem {
     	
     	//elevator1 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR1);
     	//elevator2 = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR2);
-<<<<<<< HEAD
-
-    	encoder.setMaxPeriod(0.1);
-=======
-    	
     	elevator1.configOpenloopRamp(1/2, 0);
     	elevator2.configOpenloopRamp(1/2, 0);
     	
     	//play around with this
     	//encoder.setMaxPeriod(0.1);
->>>>>>> MaxTesting
     	encoder.setDistancePerPulse(DISTANCE_PER_PULSE);
     	
     }
@@ -128,40 +96,6 @@ public class Elevator extends Subsystem {
     	return !minSwitch.get();
     	
     }
-<<<<<<< HEAD
-=======
-    
-    public int getEncoderRevs() {
-    	
-    	return encoder.get();
-    	
-    }
-    
-    public double getEncoderDistance() {
-    	
-    	return encoder.getDistance();
-    	
-    }
-    
-    public double getEncoderRate() {
-    	
-    	return encoder.getRate();
-    	
-    }
-    
-    public boolean getEncoderStopped() {
-    	
-    	return encoder.getStopped();
-    	
-    }
-    
-    public void constantForce() {
-    	
-    	elevator1.set(-0.15);
-    	elevator2.set(0.15);
-    	
-    }
->>>>>>> MaxTesting
     
     /**
      * @return the current count of rotations. May be reset by calling reset()
@@ -194,14 +128,9 @@ public class Elevator extends Subsystem {
 	 * Extends the elevator at a speed of 0.75.
 	 */
     public void ascend() {
-    	
-<<<<<<< HEAD
-    	elevator1.set(1);
-    	elevator2.set(-1);
-=======
+
     	elevator1.set(-0.9);
     	elevator2.set(9);
->>>>>>> MaxTesting
     	
     }
     
@@ -209,18 +138,9 @@ public class Elevator extends Subsystem {
      * Retracts the elevator at a speed of -0.75.
      */
     public void descend() {
-    	
-<<<<<<< HEAD
-    	while(!minSwitchTriggered()) {
-=======
+ 
     	elevator1.set(0.3);
     	elevator2.set(-0.3);
->>>>>>> MaxTesting
-    	
-			elevator1.set(-1);
-	    	elevator2.set(1);
-			
-    	}
 	    	
     }
     
@@ -231,10 +151,7 @@ public class Elevator extends Subsystem {
     	
     	elevator1.set(0);
     	elevator2.set(0);
-<<<<<<< HEAD
     	
-=======
->>>>>>> MaxTesting
     }
 
 	protected void initDefaultCommand() {

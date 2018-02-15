@@ -8,16 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-<<<<<<< HEAD
-public abstract class ElevatorAscendCmd extends Command {
-/*
-	private int revs = 0;
-	private boolean lasttime = false;
-=======
+
 public class ElevatorAscendCmd extends Command {
 
-
->>>>>>> MaxTesting
     public ElevatorAscendCmd() {
        
     	requires(Robot.el);
@@ -32,18 +25,14 @@ public class ElevatorAscendCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.el.maxSwitchTriggered()){
-    		Robot.el.ascend();
-    	}
-    	else{
-    		Robot.el.stop();
-    	}
+    	Robot.el.ascend();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	return false;
+    	return Robot.el.maxSwitchTriggered();
     
     }
 
@@ -62,5 +51,5 @@ public class ElevatorAscendCmd extends Command {
     	end();
     	
     }
-*/
+
 }

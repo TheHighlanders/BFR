@@ -89,18 +89,11 @@ public class OI {
 		}
 		
 		buttons[2].whenPressed(new TurnAngleCmd(90, 5));
-	
-<<<<<<< HEAD
-	public OI() {
 		
-		// starts the process of ascending to maximum elevator height
-		//Button b9 = new JoystickButton(logitech, 9);
-		//b9.toggleWhenPressed(new ElevatorAscendCmd());
-=======
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		buttons[11].whenPressed(new ElevatorLowScaleCmd());
->>>>>>> MaxTesting
+
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());
