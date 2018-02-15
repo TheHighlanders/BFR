@@ -33,7 +33,6 @@ public class TurnAngleCmd extends Command {
 	
 	private boolean needReInit = true;
 	
-	
 	/**
 	 * Constructor
 	 * 
@@ -75,7 +74,7 @@ public class TurnAngleCmd extends Command {
 		}
 	
 		else { 
-			turnSpeed = Math.pow(Math.abs(currentAngleOffset), 0.8) / 100;
+			turnSpeed = Math.pow(Math.abs(currentAngleOffset), 0.8) / 50;
 			DriverStation.reportWarning("turnSpeed: " +turnSpeed + "currentAngleOffset: " +currentAngleOffset, false);
 			Robot.dt.driveLR(turnSpeed,-turnSpeed);
 				
@@ -84,13 +83,15 @@ public class TurnAngleCmd extends Command {
 	}
 
 	protected boolean isFinished() {
+		//DriverStation.reportWarning("First Condition value is " + (Math.abs(currentAngleOffset) < acceptedAngleOffset), false);
 		return ((Math.abs(currentAngleOffset) < acceptedAngleOffset) && (Math.abs(Robot.dt.getGyroRate()) <= 10));
-	
+		
 	}
 	
 	protected void end() {
 		needReInit = true;
-		
+		DriverStation.reportWarning("yo", false);
+
 		Robot.dt.stop();
 	
 	}

@@ -88,7 +88,7 @@ public class OI {
 			
 		}
 		
-		buttons[2].whenPressed(new TurnAngleCmd(90, 5));
+		buttons[2].whenPressed(new TurnAngleCmd(90, 10));
 	
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());

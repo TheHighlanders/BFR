@@ -8,6 +8,7 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
+import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
@@ -114,10 +115,11 @@ public class Robot extends IterativeRobot {
 		
 		//DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
 		//DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
-		DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
-		DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
-		DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
-		DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
+		//DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
+		//DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
+		//DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
+		//DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
+		
 		
  		//gi.startWheels();
 		
