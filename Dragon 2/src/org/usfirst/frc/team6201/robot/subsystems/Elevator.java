@@ -124,6 +124,13 @@ public class Elevator extends Subsystem {
     	
     }
     
+    public void constantForce() {
+    	
+    	elevator1.set(-0.15);
+    	elevator2.set(0.15);
+    	
+    }
+    
 	/**
 	 * Extends the elevator at a speed of 0.75.
 	 */
