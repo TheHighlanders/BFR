@@ -7,13 +7,14 @@
 
 package org.usfirst.frc.team6201.robot;
 
-import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
-import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
+import org.usfirst.frc.team6201.robot.commands.auto.AutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.AutoLRLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.AutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.AutoRRRCmdGroup;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -96,6 +97,34 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		
+		// Checks for every possible arrangement
+		// Put desired command group in each case
+		if(gameData.length() > 0) {
+			
+			if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L') {
+				
+				new AutoLLLCmdGroup();
+				
+			} else if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'R') {
+				
+				new AutoLRLCmdGroup();
+				
+			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'L') {
+				
+				new AutoRLRCmdGroup();
+				
+			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R') {
+				
+				new AutoRRRCmdGroup();
+				
+			} 
+
+			
+		}
 
 	}
 

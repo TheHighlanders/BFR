@@ -15,6 +15,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * two TalonSRX motor controllers and two limit switches for detecting
  * maximum and minimum height.
  * 
+ * Required revolutions for each stage:
+ * Top Scale: 13
+ * Mid Scale: 10
+ * Low Scale: 8
+ * Switch: 5 (not tested)
+ * 
  * TODO: Add encoders to detect how high the elevator is at a certain point.
  * 
  * @author Baxter Ellard

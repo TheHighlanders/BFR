@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveDistCmd extends Command {
-	
+ 	
 	/**
 	 * turnSpeed is the speed that the robot turns at depends on currentAngleOffset 
 	 */
@@ -50,7 +50,7 @@ public class DriveDistCmd extends Command {
 	
 	protected void initialize() {
 		
-		currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
+		//currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
 		needReInit = false;
 	
 	}
@@ -62,7 +62,7 @@ public class DriveDistCmd extends Command {
 		if (needReInit){
 			initialize();
 		}
-		currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
+		//currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
 		
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
 			Robot.dt.driveLR(1,-1);
