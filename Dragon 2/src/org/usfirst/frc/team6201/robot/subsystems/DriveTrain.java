@@ -3,6 +3,7 @@ package org.usfirst.frc.team6201.robot.subsystems;
 import org.usfirst.frc.team6201.robot.RobotMap;
 import org.usfirst.frc.team6201.robot.commands.ArcadeDriveCmd;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -25,9 +26,9 @@ public class DriveTrain extends Subsystem {
 
 	// Instantiating TalonSRX motor controllers at CAN ports
 	// 1 through 4.
-	private WPI_TalonSRX left1 = new WPI_TalonSRX(1);
+	public WPI_TalonSRX left1 = new WPI_TalonSRX(1);
 	private WPI_TalonSRX left2 = new WPI_TalonSRX(2);
-	private WPI_TalonSRX right1 = new WPI_TalonSRX(3);
+	public WPI_TalonSRX right1 = new WPI_TalonSRX(3);
 	private WPI_TalonSRX right2 = new WPI_TalonSRX(4);
 		
 	// Gyro sensor
@@ -55,7 +56,10 @@ public class DriveTrain extends Subsystem {
     	left2.setNeutralMode(NeutralMode.Brake);
     	right1.setNeutralMode(NeutralMode.Brake);
     	right2.setNeutralMode(NeutralMode.Brake);
-    
+    	
+    	left1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	right1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	
     }
     
     /**

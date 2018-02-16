@@ -24,6 +24,12 @@ public class ArcadeDriveCmd extends Command {
 		
 	}
 	
+	private double linearElevatorFunction(double height) {
+		
+		return (-height / 104) + 1;
+		
+	}
+	
     public ArcadeDriveCmd() {
         
     	requires(Robot.dt);

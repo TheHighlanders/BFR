@@ -37,7 +37,8 @@ public class TurnAngleCmd extends Command {
 	 * Constructor
 	 * 
 	 * @param targetRotation			Degrees to turn the robot (pos = clockwise, neg = counterclockwise)
-	 * @param acceptedAngleOffset		The difference between desired and current positions of our robot at which point this command will stop running.
+	 * @param acceptedAngleOffset		The difference between desi
+	 * red and current positions of our robot at which point this command will stop running.
 	 */
 	public TurnAngleCmd(double targetRotation, double acceptedAngleOffset) {
 	
