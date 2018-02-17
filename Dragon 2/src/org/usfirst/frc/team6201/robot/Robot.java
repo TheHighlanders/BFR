@@ -103,7 +103,7 @@ public class Robot extends IterativeRobot {
 		
 		// Checks for every possible arrangement
 		// Put desired command group in each case
-		if(gameData.length() > 0) {
+		/*if(gameData.length() > 0) {
 			
 			if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L') {
 				
@@ -124,7 +124,7 @@ public class Robot extends IterativeRobot {
 			} 
 
 			
-		}
+		}*/
 
 	}
 
@@ -154,7 +154,7 @@ public class Robot extends IterativeRobot {
 		//DriverStation.reportWarning("Left Drive Encoder: " + -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096), false);
 		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition() / 4096, false);
 		//DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
- 		DriverStation.reportWarning("Gyro Angle: " + dt.getGyroAngle(), false);
+ 		//DriverStation.reportWarning("Gyro Angle: " + dt.getGyroAngle(), false);
 		
 	}
 

@@ -29,7 +29,7 @@ public class TurnAngleCmd extends Command {
 	/**
 	 * MAXSPEEDTHRESH is the angleOffSet where you rotate full speed  
 	 */
-	private final double MAXSPEEDTHRESH = 84;
+	private final double MAXSPEEDTHRESH = 40;
 	
 	private boolean needReInit = true;
 	
@@ -67,17 +67,27 @@ public class TurnAngleCmd extends Command {
 		currentAngleOffset = targetRotation - Robot.dt.getGyroAngle();
 		
 		if (currentAngleOffset >= MAXSPEEDTHRESH){
-			Robot.dt.driveLR(0.9,-0.9);
+			Robot.dt.driveLR(0.8,-0.8);
 		}
 		
 		else if (currentAngleOffset <= -MAXSPEEDTHRESH){
-			Robot.dt.driveLR(-0.9,0.9);
+			Robot.dt.driveLR(-0.8,0.8);
 		}
 	
 		else { 
-			turnSpeed = Math.pow(Math.abs(currentAngleOffset), 0.8) / 50;
-			DriverStation.reportWarning("turnSpeed: " +turnSpeed + "currentAngleOffset: " +currentAngleOffset, false);
-			Robot.dt.driveLR(turnSpeed,-turnSpeed);
+			//turnSpeed = Math.pow(currentAngleOffset, 1/3) / 6;
+			//DriverStation.reportWarning("turnSpeed: " +turnSpeed + "currentAngleOffset: " +currentAngleOffset, false);
+			//Robot.dt.driveLR(turnSpeed,-turnSpeed);
+			
+			if(currentAngleOffset < 0) {
+	    		
+	    		Robot.dt.driveLR(-0.2, 0.2);
+	    		
+	    	} else if(currentAngleOffset > 0) {
+	    		
+	    		Robot.dt.driveLR(0.2, -0.2);
+	    		
+	    	}
 				
 		}
 		
@@ -91,7 +101,7 @@ public class TurnAngleCmd extends Command {
 	
 	protected void end() {
 		needReInit = true;
-		DriverStation.reportWarning("yo", false);
+		//DriverStation.reportWarning("yo", false);
 
 		Robot.dt.stop();
 	

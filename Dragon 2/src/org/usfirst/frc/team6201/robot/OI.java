@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team6201.robot;
 
-import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
@@ -15,6 +14,7 @@ import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
+import org.usfirst.frc.team6201.robot.commands.auto.AutoLLLCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -93,7 +93,7 @@ public class OI {
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
-		buttons[11].whenPressed(new DriveDistCmd(168, 15));
+		//buttons[11].whenPressed(new AutoLLLCmdGroup());
 		buttons[12].whenPressed(new ElevatorDescendCmd());
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());

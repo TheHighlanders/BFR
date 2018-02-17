@@ -13,12 +13,12 @@ public class DriveDistCmd extends Command {
 	/**
 	 * turnSpeed is the speed that the robot turns at depends on currentAngleOffset 
 	 */
-	private double driveSpeed = 0.9;
+	private double driveSpeed = 0.5;
 	/**
 	 * The set of wheels you want to be slower when turning while moving forward.
 	 * Set to left side if turning right, set to right side if turning left.
 	 */
-	private double turnSpeed = 0.7;
+	private double turnSpeed = 0.3;
 	/**
 	 * targetRotation is how far we want to turn the robot from the inital conditions 
 	 */
@@ -83,15 +83,15 @@ public class DriveDistCmd extends Command {
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
 			
 			if(currentAngleOffset > 2.5) {
-	    		DriverStation.reportWarning("a little to the left", false);
+	    		//DriverStation.reportWarning("a little to the left", false);
 	    		Robot.dt.driveLR(driveSpeed, turnSpeed);
 	    		
 	    	} else if(currentAngleOffset < -2.5) {
-	    		DriverStation.reportWarning("a little to the right", false);
+	    		//DriverStation.reportWarning("a little to the right", false);
 	    		Robot.dt.driveLR(turnSpeed, driveSpeed);
 	    		
 	    	} else {
-	    		DriverStation.reportWarning("juuuust right", false);
+	    		//DriverStation.reportWarning("juuuust right", false);
 				Robot.dt.driveLR(driveSpeed, driveSpeed);
 	    		
 	    	}
@@ -109,7 +109,7 @@ public class DriveDistCmd extends Command {
 	    		
 	    	} else {
 	    		
-				Robot.dt.driveLR(driveSpeed, driveSpeed);
+				Robot.dt.driveLR(-driveSpeed, -driveSpeed);
 	    		
 	    	}
 				
@@ -132,7 +132,7 @@ public class DriveDistCmd extends Command {
 	
 	protected void end() {
 		needReInit = true;
-		DriverStation.reportWarning("yo", false);
+		//DriverStation.reportWarning("yo", false);
 
 		Robot.dt.stop();
 	
