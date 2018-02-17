@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6201.robot;
 
+import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
@@ -93,7 +94,8 @@ public class OI {
 	
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
-		buttons[11].whenPressed(new ElevatorLowScaleCmd());
+		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
+		buttons[11].whenPressed(new DriveDistCmd(190, 10));
 		buttons[12].whenPressed(new ElevatorDescendCmd());
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());

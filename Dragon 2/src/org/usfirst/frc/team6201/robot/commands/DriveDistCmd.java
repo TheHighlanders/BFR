@@ -43,14 +43,15 @@ public class DriveDistCmd extends Command {
 	
 		requires(Robot.dt);
 		
-		this.targetDistance = targetDistance;
-		this.acceptedDistanceOffset = acceptedDistanceOffset;
+		this.targetDistance = targetDist;
+		this.acceptedDistanceOffset = acceptedDistOffset;
 	
 	}
 	
 	protected void initialize() {
 		
-		//currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
+		currentDistanceOffset = targetDistance;
+		Robot.dt.resetEncoders();
 		needReInit = false;
 	
 	}
@@ -62,7 +63,7 @@ public class DriveDistCmd extends Command {
 		if (needReInit){
 			initialize();
 		}
-		//currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
+		currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
 		
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
 			Robot.dt.driveLR(1,-1);
@@ -73,9 +74,9 @@ public class DriveDistCmd extends Command {
 		}
 	
 		else { 
-			driveSpeed = Math.pow(Math.abs(currentDistanceOffset), 0.8) / 50;
-			DriverStation.reportWarning("turnSpeed: " + driveSpeed + "currentAngleOffset: " + currentDistanceOffset, false);
-			Robot.dt.driveLR(driveSpeed,driveSpeed);
+			//driveSpeed = Math.pow(Math.abs(currentDistanceOffset), 0.8) / 50;
+			//DriverStation.reportWarning("turnSpeed: " + driveSpeed + "currentDistanceOffset: " + currentDistanceOffset, false);
+			Robot.dt.driveLR(0.5,-0.5);
 				
 		}
 		

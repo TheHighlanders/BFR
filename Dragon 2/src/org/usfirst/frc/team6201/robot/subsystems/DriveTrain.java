@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6201.robot.subsystems;
 
+import org.usfirst.frc.team6201.robot.Robot;
 import org.usfirst.frc.team6201.robot.RobotMap;
 import org.usfirst.frc.team6201.robot.commands.ArcadeDriveCmd;
 
@@ -151,6 +152,29 @@ public class DriveTrain extends Subsystem {
     public double getGyroAngle() {
     	
     	return gyro.getAngle();
+    	
+    }
+    
+    /**
+	 * Sets the drivetrain encoders back to 0 pulses
+	 */
+    public void resetEncoders() {
+    	
+    	Robot.dt.left1.getSensorCollection().setPulseWidthPosition(0, 0);
+    	Robot.dt.right1.getSensorCollection().setPulseWidthPosition(0, 0);
+    	
+    }
+    
+    /**
+	 * 
+	 * @return gets an approximation of the distance traveled in inches
+	 *         since reset was last called. Will accumulate error
+	 *         over time.
+	 * 
+	 */
+    public double getDistanceTraveled() {
+    	
+    	return -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 1024) * 6 * Math.PI;
     	
     }
     
