@@ -151,10 +151,10 @@ public class Robot extends IterativeRobot {
 		//DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
 		//DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
 		//DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
-		DriverStation.reportWarning("Left Drive Encoder: " + -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096), false);
-		DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition() / 4096, false);
-		DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
- 		//gi.startWheels();
+		//DriverStation.reportWarning("Left Drive Encoder: " + -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096), false);
+		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition() / 4096, false);
+		//DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
+ 		DriverStation.reportWarning("Gyro Angle: " + dt.getGyroAngle(), false);
 		
 	}
 

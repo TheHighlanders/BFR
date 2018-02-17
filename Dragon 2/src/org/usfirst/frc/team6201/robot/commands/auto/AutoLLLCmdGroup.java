@@ -1,6 +1,6 @@
 package org.usfirst.frc.team6201.robot.commands.auto;
 
-import org.usfirst.frc.team6201.robot.commands.DriveDistanceCmd;
+import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -11,7 +11,7 @@ public class AutoLLLCmdGroup extends CommandGroup {
 
     public AutoLLLCmdGroup() {
     	
-    	addSequential(new DriveDistanceCmd(14*12, 6));
+    	addSequential(new DriveDistCmd(14*12, 6));
     	
     	
         // Add Commands here:
