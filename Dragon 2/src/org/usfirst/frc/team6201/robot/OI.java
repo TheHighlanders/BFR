@@ -8,10 +8,9 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
+import org.usfirst.frc.team6201.robot.commands.DriveDistanceCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
-import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
-import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
@@ -95,8 +94,9 @@ public class OI {
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
-		buttons[11].whenPressed(new DriveDistCmd(190, 10));
-		buttons[12].whenPressed(new ElevatorDescendCmd());
+		buttons[11].whenPressed(new DriveDistCmd(190, 15));
+		//buttons[12].whenPressed(new ElevatorDescendCmd());
+		buttons[12].whenPressed(new DriveDistanceCmd(190, 15));
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());

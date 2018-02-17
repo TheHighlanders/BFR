@@ -174,7 +174,7 @@ public class DriveTrain extends Subsystem {
 	 */
     public double getDistanceTraveled() {
     	
-    	return -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 1024) * 6 * Math.PI;
+    	return -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096) * 6 * Math.PI;
     	
     }
     

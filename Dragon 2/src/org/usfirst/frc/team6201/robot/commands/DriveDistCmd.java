@@ -66,17 +66,17 @@ public class DriveDistCmd extends Command {
 		currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
 		
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
-			Robot.dt.driveLR(1,-1);
+			Robot.dt.driveLR(0.2, 0.2);
 		}
 		
 		else if (currentDistanceOffset <= -MAXSPEEDTHRESH){
-			Robot.dt.driveLR(1,1);
+			Robot.dt.driveLR(0.2,0.2);
 		}
 	
 		else { 
 			//driveSpeed = Math.pow(Math.abs(currentDistanceOffset), 0.8) / 50;
 			//DriverStation.reportWarning("turnSpeed: " + driveSpeed + "currentDistanceOffset: " + currentDistanceOffset, false);
-			Robot.dt.driveLR(0.5,-0.5);
+			Robot.dt.driveLR(0.1, 0.1);
 				
 		}
 		
@@ -84,8 +84,8 @@ public class DriveDistCmd extends Command {
 
 	protected boolean isFinished() {
 		//DriverStation.reportWarning("First Condition value is " + (Math.abs(currentAngleOffset) < acceptedAngleOffset), false);
-		//return ((Math.abs(currentAngleOffset) < acceptedAngleOffset) && (Math.abs(Robot.dt.getGyroRate()) <= 10));
-		return true;
+		return (Math.abs(currentDistanceOffset) < acceptedDistanceOffset);
+		
 	}
 	
 	protected void end() {

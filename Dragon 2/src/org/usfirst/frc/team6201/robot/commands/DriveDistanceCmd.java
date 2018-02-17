@@ -36,7 +36,7 @@ public class DriveDistanceCmd extends Command {
 	 * Get the left encoder's reading because right encoder always starts at 3 for some reason.
 	 * Make it negative to invert it and make the readings from both encoders match.
 	 */
-	private double revs = -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 1024);
+	private double revs = -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096);
 	
 	/**
 	 * Used to find how far we have traveled by taking the distance we travel in one wheel rotation
@@ -92,7 +92,7 @@ public class DriveDistanceCmd extends Command {
     		
     	} else {
     		
-    		Robot.dt.driveLR(0.9, 0.9);
+    		Robot.dt.driveLR(0.3, 0.3);
     		
     	}
     	
