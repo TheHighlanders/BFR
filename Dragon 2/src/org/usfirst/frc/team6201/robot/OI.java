@@ -51,6 +51,8 @@ public class OI {
 	
 	private Button lb = new JoystickButton(xbox,5);
 	private Button rb = new JoystickButton(xbox, 6);
+	private Button bpress = new JoystickButton(xbox,10);
+	private Button y = new JoystickButton(xbox,4);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -142,6 +144,14 @@ public class OI {
 		return rb.get();
 	}
 	
+	public boolean getButtonbpress() {
+		return bpress.get();
+	}
+	
+	public boolean getButtony() {
+		return y.get();
+	}
+	
 	public OI() {
 		
 		// starts the process of ascending to maximum elevator height
@@ -156,6 +166,10 @@ public class OI {
 		
 		rb.whenPressed(new ElevatorTopScaleCmd());
 		
+		bpress.whenPressed(new ElevatorMidScaleCmd());
+		
+		//brings Elevator to Switch level
+		y.whenPressed(new ElevatorTopScaleCmd());
 		
 		//b7.whenPressed(new ElevatorTopScaleCmd());
 		//b9.whenPressed(new ElevatorMidScaleCmd());
