@@ -11,6 +11,7 @@ import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorSwitchCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -160,7 +161,9 @@ public class OI {
 		
 		b9.whileHeld(new ElevatorDescendCmd());
 		
-		//xbox controller
+		/**
+		 * XBOX Controller
+		 */
 		//brings Elevator to the height of the scale and the bottom
 		lb.whenPressed(new ElevatorLowScaleCmd());
 		
@@ -169,7 +172,7 @@ public class OI {
 		bpress.whenPressed(new ElevatorMidScaleCmd());
 		
 		//brings Elevator to Switch level
-		y.whenPressed(new ElevatorTopScaleCmd());
+		y.whenPressed(new ElevatorSwitchCmd());
 		
 		//b7.whenPressed(new ElevatorTopScaleCmd());
 		//b9.whenPressed(new ElevatorMidScaleCmd());
