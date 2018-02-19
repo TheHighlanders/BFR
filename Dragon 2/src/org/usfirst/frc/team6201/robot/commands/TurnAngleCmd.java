@@ -67,11 +67,11 @@ public class TurnAngleCmd extends Command {
 		currentAngleOffset = targetRotation - Robot.dt.getGyroAngle();
 		
 		if (currentAngleOffset >= MAXSPEEDTHRESH){
-			Robot.dt.driveLR(0.8,-0.8);
+			Robot.dt.driveLR(0.3,-0.3);
 		}
 		
 		else if (currentAngleOffset <= -MAXSPEEDTHRESH){
-			Robot.dt.driveLR(-0.8,0.8);
+			Robot.dt.driveLR(-0.3,0.3);
 		}
 	
 		else { 

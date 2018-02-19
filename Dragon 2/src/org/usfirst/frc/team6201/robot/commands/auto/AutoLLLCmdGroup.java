@@ -16,20 +16,21 @@ public class AutoLLLCmdGroup extends CommandGroup {
 
     public AutoLLLCmdGroup() {
     	
-    	DriverStation.reportWarning("Autonomous Procedure LLL initiated.", false);
+    	/*DriverStation.reportWarning("Autonomous Procedure LLL initiated.", false);
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
-    	addSequential(new DriveDistCmd(14*12, 6));
+    	addSequential(new DriveDistCmd(6*12, 6));
     	DriverStation.reportWarning("14 feet driven, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
     	addSequential(new DriveDistCmd(12, 12));
     	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
-    	addSequential(new ElevatorMidScaleCmd());
+    	//addSequential(new ElevatorMidScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
-    	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new GripperPushCmd());
+    	//addParallel(new ElevatorConstantForceCmd());
+    	//addSequential(new GripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
     	DriverStation.reportWarning("Autonomous Procedure LLL complete.", false);
+    	*/
     	
     	
         // Add Commands here:

@@ -11,28 +11,28 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveDistCmd extends Command {
  	
 	/**
-	 * turnSpeed is the speed that the robot turns at depends on currentAngleOffset 
+	 * driveSpeed is the speed that the robot drives at when it is going straight 
 	 */
 	private double driveSpeed = 0.5;
 	/**
-	 * The set of wheels you want to be slower when turning while moving forward.
+	 * The speed of the wheels that you want to be slower when turning while moving forward.
 	 * Set to left side if turning right, set to right side if turning left.
 	 */
-	private double turnSpeed = 0.3;
+	private double turnSpeed = 0.2;
 	/**
-	 * targetRotation is how far we want to turn the robot from the inital conditions 
+	 * targetDistance is how far the robot should travel
 	 */
 	private double targetDistance;
 	/**
-	 *  acceptedAngleOffset is the difference between desired and current positions of our robot at which point this command will stop running.
+	 *  acceptedDistanceOffset is the acceptable amount of distance from the goal
 	 */
 	private double acceptedDistanceOffset;
 	/**
-	 * currentAngleOffset the difference between targetRotion and current angle of the robot
+	 * currentDistanceOffset the difference between the goal and location of the robot
 	 */
 	private double currentDistanceOffset;
 	/**
-	 * MAXSPEEDTHRESH is the angleOffSet where you rotate full speed  
+	 * If the Robot is further from the goal than MAXSPEEDTHRESH, it moves full speed 
 	 */
 	private final double MAXSPEEDTHRESH = 24;
 	/**
@@ -40,7 +40,7 @@ public class DriveDistCmd extends Command {
 	 */
 	private double currentAngle = Robot.dt.getGyroAngle();
 	/**
-	 * How far our angle is away from 0.
+	 * How far our current angle is away from 0.
 	 */
 	private double currentAngleOffset;
 	
@@ -49,8 +49,8 @@ public class DriveDistCmd extends Command {
 	/**
 	 * Constructor
 	 * 
-	 * @param targetRotation			Degrees to turn the robot (pos = clockwise, neg = counterclockwise)
-	 * @param acceptedAngleOffset		The difference between desired and current positions of our robot at which point this command will stop running.
+	 * @param targetDist			Degrees to turn the robot (pos = clockwise, neg = counterclockwise)
+	 * @param acceptedDistOffset	The allowable error between goal and final position of the Robot
 	 */
 	public DriveDistCmd(double targetDist, double acceptedDistOffset) {
 	
@@ -82,12 +82,12 @@ public class DriveDistCmd extends Command {
 		
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
 			
-			if(currentAngleOffset > 2.5) {
-	    		//DriverStation.reportWarning("a little to the left", false);
+			if(currentAngleOffset < -2.5) {
+	    		DriverStation.reportWarning("a little to the left", false);
 	    		Robot.dt.driveLR(driveSpeed, turnSpeed);
 	    		
-	    	} else if(currentAngleOffset < -2.5) {
-	    		//DriverStation.reportWarning("a little to the right", false);
+	    	} else if(currentAngleOffset > 2.5) {
+	    		DriverStation.reportWarning("a little to the right", false);
 	    		Robot.dt.driveLR(turnSpeed, driveSpeed);
 	    		
 	    	} else {

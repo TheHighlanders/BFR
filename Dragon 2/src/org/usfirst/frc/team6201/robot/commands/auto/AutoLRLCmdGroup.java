@@ -1,13 +1,32 @@
 package org.usfirst.frc.team6201.robot.commands.auto;
 
+import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
+import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Assumes we are all the way on the left. Attempts the switch.
  */
 public class AutoLRLCmdGroup extends CommandGroup {
 
     public AutoLRLCmdGroup() {
+    	
+    	DriverStation.reportWarning("Autonomous Procedure RLR initiated.", false);
+    	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
+    	addSequential(new DriveDistCmd(140, 6));
+    	DriverStation.reportWarning("14 feet driven, Stage 1 complete.", false);
+    	addSequential(new TurnAngleCmd(90, 10));
+    	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
+    	addSequential(new DriveDistCmd(12, 12));
+    	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
+    	//addSequential(new ElevatorMidScaleCmd());
+    	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
+    	//addParallel(new ElevatorConstantForceCmd());
+    	//addSequential(new GripperPushCmd());
+    	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
+    	DriverStation.reportWarning("Autonomous Procedure LLL complete.", false);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
