@@ -158,11 +158,15 @@ public class DriveTrain extends Subsystem {
     
     /**
 	 * Sets the drivetrain encoders back to 0 pulses
+	 * Only one message will print here
+	 * Leave this at -3000 if you want it to work better 
 	 */
     public void resetEncoders() {
     	
-    	Robot.dt.left1.getSensorCollection().setPulseWidthPosition(0, 0);
-    	Robot.dt.right1.getSensorCollection().setPulseWidthPosition(0, 0);
+    	Robot.dt.left1.getSensorCollection().setPulseWidthPosition(-3000, 0);
+    	Robot.dt.right1.getSensorCollection().setPulseWidthPosition(-3000, 0);
+    	
+		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
     	//DriverStation.reportWarning("TEsting", false);
     }
     
@@ -174,7 +178,7 @@ public class DriveTrain extends Subsystem {
 	 * 
 	 */
     public double getDistanceTraveled() {
-    	
+    	DriverStation.reportWarning("Left:" + (-(Robot.dt.left1.getSensorCollection().getPulseWidthPosition())) + " Right: " + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
     	return -((double) Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096.0) * 6 * Math.PI;
     	
     }
