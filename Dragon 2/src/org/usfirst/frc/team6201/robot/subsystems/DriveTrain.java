@@ -86,7 +86,7 @@ public class DriveTrain extends Subsystem {
     	
   //  	DriverStation.reportWarning("Left Power: " + leftPower, false);
   //  	DriverStation.reportWarning("Right Power: " + rightPower, false);
-	    	
+    	//DriverStation.reportWarning("FOR: " + forwardOrReverse, false);
     	if(forwardOrReverse == 1) {
     		
     		left1.set(-leftPower);
@@ -159,13 +159,13 @@ public class DriveTrain extends Subsystem {
     /**
 	 * Sets the drivetrain encoders back to 0 pulses
 	 * Only one message will print here
-	 * Leave this at -3000 if you want it to work better 
+	 * Leave this at -3000?
 	 */
-    public void resetEncoders() {
+    public void setEncoders(int pulses) {
     	
-    	Robot.dt.left1.getSensorCollection().setPulseWidthPosition(-3000, 0);
-    	Robot.dt.right1.getSensorCollection().setPulseWidthPosition(-3000, 0);
-    	
+    	left1.getSensorCollection().setPulseWidthPosition(pulses, 0);
+    	right1.getSensorCollection().setPulseWidthPosition(pulses, 0);
+    
 		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
     	//DriverStation.reportWarning("TEsting", false);
     }
@@ -178,8 +178,8 @@ public class DriveTrain extends Subsystem {
 	 * 
 	 */
     public double getDistanceTraveled() {
-    	DriverStation.reportWarning("Left:" + (-(Robot.dt.left1.getSensorCollection().getPulseWidthPosition())) + " Right: " + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
-    	return -((double) Robot.dt.left1.getSensorCollection().getPulseWidthPosition() / 4096.0) * 6 * Math.PI;
+    	//DriverStation.reportWarning("Left:" + (-(left1.getSensorCollection().getPulseWidthPosition())) + " Right: " + right1.getSensorCollection().getPulseWidthPosition(), false);
+    	return -((double) left1.getSensorCollection().getPulseWidthPosition() / 4096.0) * 6 * Math.PI;
     	
     }
     

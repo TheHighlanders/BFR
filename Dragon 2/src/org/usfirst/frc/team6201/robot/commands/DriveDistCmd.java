@@ -42,7 +42,6 @@ public class DriveDistCmd extends Command {
 	/**
 	 * How far our current angle is away from 0.
 	 */
-	private double currentAngleOffset;
 	
 	private boolean needReInit = true;
 	
@@ -64,7 +63,7 @@ public class DriveDistCmd extends Command {
 	protected void initialize() {
 		
 		currentDistanceOffset = targetDistance;
-		Robot.dt.resetEncoders();
+		Robot.dt.setEncoders(0);
 		Robot.dt.resetGyro();
 		needReInit = false;
 	
@@ -78,15 +77,14 @@ public class DriveDistCmd extends Command {
 			initialize();
 		}
 		currentDistanceOffset = targetDistance - Robot.dt.getDistanceTraveled();
-		currentAngleOffset = 0 - currentAngle;
-		
+		DriverStation.reportWarning("Gyro Angle: " + Robot.dt.getGyroAngle(), false);
+		currentAngle = Robot.dt.getGyroAngle();
 		if (currentDistanceOffset >= MAXSPEEDTHRESH){
-			
-			if(currentAngleOffset < -2.5) {
+			if(currentAngle < -2.5) {
 	    		DriverStation.reportWarning("a little to the left", false);
 	    		Robot.dt.driveLR(driveSpeed, turnSpeed);
 	    		
-	    	} else if(currentAngleOffset > 2.5) {
+	    	} else if(currentAngle > 2.5) {
 	    		DriverStation.reportWarning("a little to the right", false);
 	    		Robot.dt.driveLR(turnSpeed, driveSpeed);
 	    		
@@ -98,12 +96,12 @@ public class DriveDistCmd extends Command {
 		}
 		
 		else if (currentDistanceOffset <= -MAXSPEEDTHRESH){
-			
-			if(currentAngleOffset > 2.5) {
+			DriverStation.reportWarning("Negative distance", false);
+			if(currentAngle > 2.5) {
 	    		
 	    		Robot.dt.driveLR(-driveSpeed, -turnSpeed);
 	    		
-	    	} else if(currentAngleOffset < -2.5) {
+	    	} else if(currentAngle < -2.5) {
 	    		
 	    		Robot.dt.driveLR(-turnSpeed, -driveSpeed);
 	    		

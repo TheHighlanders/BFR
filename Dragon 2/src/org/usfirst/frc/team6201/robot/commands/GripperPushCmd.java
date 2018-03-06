@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6201.robot.commands;
 
+import org.usfirst.frc.team6201.robot.OI;
 import org.usfirst.frc.team6201.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -14,7 +15,7 @@ public class GripperPushCmd extends Command {
     public GripperPushCmd() {
        
     	requires(Robot.gi);
-    	
+    
     }
 
     // Called just before this Command runs the first time
@@ -33,7 +34,7 @@ public class GripperPushCmd extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	return false;
+    	return !Robot.oi.buttons[4].get();
     
     }
 

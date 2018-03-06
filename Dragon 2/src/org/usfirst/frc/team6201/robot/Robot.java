@@ -7,17 +7,25 @@
 
 package org.usfirst.frc.team6201.robot;
 
-import org.usfirst.frc.team6201.robot.commands.auto.AutoLLLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.auto.AutoLRLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.auto.AutoRLRCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.auto.AutoRRRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoLRLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoRRRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoR.RAutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoR.RAutoLRLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRRRCmdGroup;
+import org.usfirst.frc.team6201.robot.subsystems.Climber;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
 import org.usfirst.frc.team6201.robot.subsystems.GripperIntake;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -54,6 +62,13 @@ public class Robot extends IterativeRobot {
 	 */
 	public static OI oi;
 	
+	public static final Climber cl = new Climber();
+	
+	public char startingPos = 'D';
+	
+	Command autonomousCommand;
+	SendableChooser autoChooser;
+	
 	/**
 	 * TalonSRX CAN Port Assignments:
 	 * 1 = rear left
@@ -81,6 +96,12 @@ public class Robot extends IterativeRobot {
 		
 		//SmartDashboard.putNumber("TurboSpeed", 0.95);
 		DriverStation.reportWarning("Robot Initiated", false);
+		
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Nothing", 'D');
+		autoChooser.addObject("Starting on the left", 'L');
+		autoChooser.addObject("Starting on the right", 'R');
+		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 
 	}
 	
@@ -100,32 +121,57 @@ public class Robot extends IterativeRobot {
 		
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
+		//gameData = SmartDashboard.getString("Auto", "D");
+		startingPos = (char) autoChooser.getSelected();
 		// Checks for every possible arrangement
 		// Put desired command group in each case
-		/*if(gameData.length() > 0) {
+		//DriverStation.reportWarning("GameData is :" + gameData, false);
+		if(gameData.length() > 0) {
 			
 			if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L') {
-				
-				new AutoLLLCmdGroup();
+				DriverStation.reportWarning("About to choose LLL", false);
+				if(startingPos == 'L'){
+					autonomousCommand = new AutoLLLCmdGroup();
+				}
+				else if(startingPos == 'R'){
+					autonomousCommand = new RAutoLLLCmdGroup();
+				}
 				
 			} else if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'R') {
-				
-				new AutoLRLCmdGroup();
+				if(startingPos == 'L'){
+					autonomousCommand = new AutoLRLCmdGroup();
+				}
+				else if(startingPos == 'R'){
+					autonomousCommand = new RAutoLRLCmdGroup();
+				}
 				
 			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'L') {
-				
-				new AutoRLRCmdGroup();
+				if(startingPos == 'L'){
+					autonomousCommand = new AutoRLRCmdGroup();
+				}
+				else if(startingPos == 'R'){
+					autonomousCommand = new RAutoRLRCmdGroup();
+				}
 				
 			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R') {
-				
-				new AutoRRRCmdGroup();
+				if(startingPos == 'L'){
+					autonomousCommand = new AutoRRRCmdGroup();
+				}
+				else if(startingPos == 'R'){
+					autonomousCommand = new RAutoRRRCmdGroup();
+				}
 				
 			} 
 
 			
-		}*/
+		}
 
+		if (autonomousCommand != null){
+			DriverStation.reportWarning("About to start", false);
+			autonomousCommand.start();
+		}
+		
+		dt.resetGyro();
 	}
 
 	/**
@@ -133,8 +179,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-
-	
+		
+		Scheduler.getInstance().run();
 	}
 	
 	/**
@@ -143,12 +189,15 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopInit() {
-		
+		DriverStation.reportWarning("Teleop Init!", false);
 		Scheduler.getInstance().run();
-		
+		el.encoder.reset();
+		el.height = 0;
  		dt.resetGyro();
- 		dt.resetEncoders();
-		
+ 		dt.setEncoders(0);
+ 		gi.stop();
+		dt.stop();
+		autonomousCommand = null;
 	}
 
 	/**
@@ -160,15 +209,16 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		//DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
-		//DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
+		//DriverStation.reportWarning("Min Switch: " + el.minSwitchTriggered(), false);
 		//DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
 		//DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
 		//DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
 		//DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
 		//DriverStation.reportWarning("Left Drive Encoder: " + -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition()), false);
 		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
-		DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
+		//DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
  		//DriverStation.reportWarning("Gyro Angle: " + dt.getGyroAngle(), false);
+		//DriverStation.reportWarning("Elevator Height:" + Robot.el.height, false);
 		
 	}
 
@@ -177,5 +227,26 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	
+	/**
+	 * This function is called periodically during operator control.
+	 */
+	@Override
+	public void disabledInit() {
+		
+		dt.setEncoders(0);
+		
+		//DriverStation.reportWarning("DIO Port 1: " + el.magEnc.get(), false);
+		//DriverStation.reportWarning("Max Switch: " + el.maxSwitchTriggered(), false);
+		//DriverStation.reportWarning("Encoder Revs: " + el.getEncoderRevs(), false);
+		//DriverStation.reportWarning("Encoder Distance: " + el.getEncoderDistance(), false);
+		//DriverStation.reportWarning("Encoder Stopped: " + el.getEncoderStopped(), false);
+		//DriverStation.reportWarning("Ultrasonic Distance: " + gi.getUltrasonicDistance(), false);
+		//DriverStation.reportWarning("Left Drive Encoder: " + -(Robot.dt.left1.getSensorCollection().getPulseWidthPosition()), false);
+		//DriverStation.reportWarning("Right Drive Encoder:" + Robot.dt.right1.getSensorCollection().getPulseWidthPosition(), false);
+		//DriverStation.reportWarning("Distance Traveled:" + Robot.dt.getDistanceTraveled(), false);
+ 		//DriverStation.reportWarning("Gyro Angle: " + dt.getGyroAngle(), false);
+		
 	}
 }

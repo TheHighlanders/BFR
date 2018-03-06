@@ -7,17 +7,22 @@
 
 package org.usfirst.frc.team6201.robot;
 
+import org.usfirst.frc.team6201.robot.commands.ClimbCmd;
 import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
+import org.usfirst.frc.team6201.robot.commands.PushDescendCmdGroup;
 import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
-import org.usfirst.frc.team6201.robot.commands.auto.AutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoLLLCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -38,7 +43,14 @@ public class OI {
 	 */
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
-	private Button[] buttons = new Button[13];
+	public Button[] buttons = new Button[13];
+	
+	private XboxController xbox = new XboxController(RobotMap.XBOX);
+	
+	private Button lb = new JoystickButton(xbox,5);
+	private Button rb = new JoystickButton(xbox, 6);
+	private Button bpress = new JoystickButton(xbox,10);
+	private Button y = new JoystickButton(xbox,4);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -81,6 +93,24 @@ public class OI {
 		
 	}
 	
+	
+	//X Box buttons
+		public boolean getButtonlb() {
+			return lb.get();
+		}
+		
+		public boolean getButtonrb() {
+			return rb.get();
+		}
+		
+		public boolean getButtonbpress() {
+			return bpress.get();
+		}
+		
+		public boolean getButtony() {
+			return y.get();
+		}
+	
 	public OI() {
 		
 		for(int i = 1; i < buttons.length; i++) {
@@ -89,20 +119,28 @@ public class OI {
 			
 		}
 		
-		buttons[2].whenPressed(new TurnAngleCmd(90, 10));
+		buttons[2].whileHeld(new ClimbCmd());
 	
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
 		//buttons[11].whenPressed(new AutoLLLCmdGroup());
-		buttons[11].whenPressed(new DriveDistCmd(6*12,12));
+		//buttons[11].whenPressed(new DriveDistCmd(12*12,12));
 		buttons[12].whenPressed(new ElevatorDescendCmd());
+		buttons[11].whenPressed(new ElevatorBottomCmd());
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());
 		
 		buttons[3].whileHeld(new GripperPullCmd());
 		buttons[4].whileHeld(new GripperPushCmd());
+		
+		lb.whenPressed(new ElevatorLowScaleCmd());
+		
+		rb.whenPressed(new ElevatorTopScaleCmd());
+		
+		bpress.whenPressed(new ElevatorMidScaleCmd());
+		
 		
 	}
 

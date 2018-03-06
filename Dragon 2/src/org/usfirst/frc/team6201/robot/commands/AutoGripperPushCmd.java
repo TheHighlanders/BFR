@@ -1,45 +1,51 @@
 package org.usfirst.frc.team6201.robot.commands;
 
+import org.usfirst.frc.team6201.robot.OI;
 import org.usfirst.frc.team6201.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorLowScaleCmd extends Command {
+public class AutoGripperPushCmd extends Command {
 
-    public ElevatorLowScaleCmd() {
+	Timer timer = new Timer();
 
-    	requires(Robot.el);
+    public AutoGripperPushCmd() {
+       
+    	requires(Robot.gi);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timer.reset();
+    	timer.start();
     	
-    	Robot.el.encoder.reset();
-    	    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.el.ascend();
     	
+    		Robot.gi.push();
+   
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.getEncoderRevs() >= 8;
-        
+    	return timer.get() >= 2;
+    
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.el.height += Robot.el.getEncoderRevs();
-    	Robot.el.stop();
+    	
+    	Robot.gi.stop();
     	
     }
 
@@ -50,4 +56,5 @@ public class ElevatorLowScaleCmd extends Command {
     	end();
     	
     }
+
 }

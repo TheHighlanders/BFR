@@ -38,6 +38,7 @@ public class ElevatorTopScaleCmd extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.el.height += Robot.el.getEncoderRevs();
     	
     	Robot.el.stop();
     	

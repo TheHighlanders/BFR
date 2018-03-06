@@ -2,44 +2,45 @@ package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorLowScaleCmd extends Command {
+public class ClimbCmd extends Command {
 
-    public ElevatorLowScaleCmd() {
 
-    	requires(Robot.el);
+    public ClimbCmd() {
+       
+    	requires(Robot.cl);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.el.encoder.reset();
-    	    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.el.ascend();
     	
+    		Robot.cl.climb();
+   
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.getEncoderRevs() >= 8;
-        
+    	return false;
+    
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.el.height += Robot.el.getEncoderRevs();
-    	Robot.el.stop();
+    	
+    	Robot.cl.stop();
     	
     }
 
@@ -50,4 +51,5 @@ public class ElevatorLowScaleCmd extends Command {
     	end();
     	
     }
+
 }

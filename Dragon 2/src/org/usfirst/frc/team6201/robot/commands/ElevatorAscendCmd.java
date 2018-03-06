@@ -25,7 +25,7 @@ public class ElevatorAscendCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if(Robot.el.maxSwitchTriggered()){
+    	if(!Robot.el.maxSwitchTriggered()){
     		Robot.el.ascend();
     	}
     	else{
@@ -43,7 +43,7 @@ public class ElevatorAscendCmd extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	
-    	
+    	Robot.el.height += Robot.el.getEncoderRevs();
     	Robot.el.stop();
     	
     }

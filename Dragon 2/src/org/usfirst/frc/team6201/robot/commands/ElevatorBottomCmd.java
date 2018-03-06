@@ -9,9 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorBottomCmd extends Command {
 
-    public ElevatorBottomCmd() {
+    private int startingHeight;
+
+	public ElevatorBottomCmd() {
        
     	requires(Robot.el);
+    	startingHeight = Robot.el.height;
     	
     }
 
@@ -39,7 +42,7 @@ public class ElevatorBottomCmd extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	
-    	
+    	Robot.el.height = 0;
     	Robot.el.stop();
     	
     }

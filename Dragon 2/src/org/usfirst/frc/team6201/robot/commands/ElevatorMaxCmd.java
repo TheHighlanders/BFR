@@ -7,37 +7,41 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorLowScaleCmd extends Command {
+public class ElevatorMaxCmd extends Command {
 
-    public ElevatorLowScaleCmd() {
+    private int startingHeight;
 
+	public ElevatorMaxCmd() {
+       
     	requires(Robot.el);
+    	startingHeight = Robot.el.height;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     	Robot.el.encoder.reset();
-    	    	
+    	
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.el.ascend();
+    	Robot.el.descend();
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return Robot.el.getEncoderRevs() >= 8;
+        return Robot.el.maxSwitchTriggered();
         
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
     	Robot.el.height += Robot.el.getEncoderRevs();
     	Robot.el.stop();
     	
@@ -50,4 +54,5 @@ public class ElevatorLowScaleCmd extends Command {
     	end();
     	
     }
+    
 }

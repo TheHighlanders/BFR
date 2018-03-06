@@ -1,13 +1,15 @@
-package org.usfirst.frc.team6201.robot.commands.auto;
+package org.usfirst.frc.team6201.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoRRRCmdGroup extends CommandGroup {
+public class PushDescendCmdGroup extends CommandGroup {
 
-    public AutoRRRCmdGroup() {
+    public PushDescendCmdGroup() {
+    	addSequential(new GripperPushCmd());
+        addSequential(new ElevatorBottomCmd());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

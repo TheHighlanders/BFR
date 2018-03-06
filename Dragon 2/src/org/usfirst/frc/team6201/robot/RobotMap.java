@@ -31,6 +31,10 @@ public class RobotMap {
 	public static final int ELEVATOR_MOTOR1 = 5;
 	public static final int ELEVATOR_MOTOR2 = 7;
 	
+	// Climber
+	public static final int CLIMBER_TOP = 3;
+	public static final int CLIMBER_BOTTOM = 2;
+	
 	// Sensors
 //	public static final int MAX_LIMIT_SWITCH = 0;
 //	public static final int MIN_LIMIT_SWITCH = 1;
@@ -42,5 +46,9 @@ public class RobotMap {
 	public static final int LOGITECH_Y_AXIS = 1;
 	public static final int LOGITECH_ROTATE_AXIS = 2;
 	public static final int LOGITECH_SLIDER_AXIS = 3;
+	
+	//X Box
+		public static final int XBOX = 2;
+		public static final int XBOX_Z_AXIS = 2;
 	
 }

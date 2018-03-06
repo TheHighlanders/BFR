@@ -34,6 +34,8 @@ public class Elevator extends Subsystem {
     public DigitalInput magEnc = new DigitalInput(1);
     
     public Counter encoder = new Counter(magEnc);
+    
+    public int height = 0;
    
     
     private static final double WHEEL_DIAMETER = 4;/*
@@ -83,7 +85,7 @@ public class Elevator extends Subsystem {
      */
     public boolean maxSwitchTriggered() {
     	
-    	return maxSwitch.get();
+    	return !maxSwitch.get();
     	
     }
     
@@ -97,7 +99,7 @@ public class Elevator extends Subsystem {
      */
     public boolean minSwitchTriggered() {
     	
-    	return minSwitch.get();
+    	return !minSwitch.get();
     	
     }
     
@@ -127,8 +129,8 @@ public class Elevator extends Subsystem {
     
     public void constantForce() {
     	
-    	elevator1.set(-0.15);
-    	elevator2.set(0.15);
+    	elevator1.set(-0.2);
+    	elevator2.set(0.2);
     	
     }
     
@@ -143,7 +145,7 @@ public class Elevator extends Subsystem {
     public void ascend() {
     	
     	elevator1.set(-0.9);
-    	elevator2.set(9);
+    	elevator2.set(0.9);
     	
     }
     
