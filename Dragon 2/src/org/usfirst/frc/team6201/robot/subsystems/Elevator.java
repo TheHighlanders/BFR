@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
 	
 	// Instantiates limit switches at DIO ports 0 and 1.
-    public DigitalInput maxSwitch = new DigitalInput(0);
+    public DigitalInput maxSwitch = new DigitalInput(3);
     private DigitalInput minSwitch = new DigitalInput(2);
     
     public DigitalInput magEnc = new DigitalInput(1);

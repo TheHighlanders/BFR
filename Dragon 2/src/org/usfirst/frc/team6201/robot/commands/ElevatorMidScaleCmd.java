@@ -2,6 +2,7 @@ package org.usfirst.frc.team6201.robot.commands;
 
 import org.usfirst.frc.team6201.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -31,7 +32,9 @@ public class ElevatorMidScaleCmd extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.el.getEncoderRevs() >= 10;
+    	DriverStation.reportWarning("Encoder Revs:" + Robot.el.getEncoderRevs(), false);
+    	DriverStation.reportWarning("Max Switch:" + Robot.el.maxSwitchTriggered(), false);
+    	return (Robot.el.getEncoderRevs() >= 10) || (Robot.el.maxSwitchTriggered());
     }
 
     // Called once after isFinished returns true

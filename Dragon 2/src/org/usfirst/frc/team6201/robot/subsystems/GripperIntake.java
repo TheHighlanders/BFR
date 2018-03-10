@@ -99,8 +99,8 @@ public class GripperIntake extends Subsystem {
     */
    public void push() {
    	
-	   gripLeft.set(-1);
-	   gripRight.set(1);
+	   gripLeft.set(-0.75);
+	   gripRight.set(0.75);
    }
    
    /**

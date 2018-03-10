@@ -3,6 +3,7 @@ package org.usfirst.frc.team6201.robot.commands.autoL;
 import org.usfirst.frc.team6201.robot.commands.AutoGripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.SmallLiftCmd;
@@ -31,7 +32,7 @@ public class AutoRRRCmdGroup extends CommandGroup {
     	
     	addSequential(new TurnAngleCmd(-90, 10));
     	DriverStation.reportWarning("Robot turned #2, Stage 4 complete.", false);
-    	addSequential(new ElevatorTopScaleCmd());
+    	addSequential(new ElevatorMidScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
 
     	addSequential(new AutoGripperPushCmd());

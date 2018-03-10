@@ -27,7 +27,7 @@ public class AutoLRLCmdGroup extends CommandGroup {
     	DriverStation.reportWarning("Reached switch, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(24, 12));
+    	addSequential(new DriveDistCmd(36, 12));
     	DriverStation.reportWarning("24 inches driven, Stage 3 complete.", false);
     	
     	addSequential(new AutoGripperPushCmd());

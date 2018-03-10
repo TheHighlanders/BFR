@@ -15,8 +15,8 @@ public class Climber extends Subsystem {
 
     public void climb() {
        	
-        top.set(-1);
-       	bottom.set(-1);
+        top.set(-0.9);
+       	bottom.set(-0.9);
        	
     }
     

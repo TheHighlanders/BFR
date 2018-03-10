@@ -8,18 +8,14 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ClimbCmd;
-import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
-import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
-import org.usfirst.frc.team6201.robot.commands.PushDescendCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.autoL.AutoRLRCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -124,10 +120,10 @@ public class OI {
 		buttons[7].whenPressed(new ElevatorTopScaleCmd());
 		buttons[9].whenPressed(new ElevatorMidScaleCmd());
 		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
-		//buttons[11].whenPressed(new AutoLLLCmdGroup());
+		buttons[11].whenPressed(new AutoRLRCmdGroup());
 		//buttons[11].whenPressed(new DriveDistCmd(12*12,12));
 		buttons[12].whenPressed(new ElevatorDescendCmd());
-		buttons[11].whenPressed(new ElevatorBottomCmd());
+		//buttons[11].whenPressed(new ElevatorBottomCmd());
 		
 		buttons[5].whileHeld(new ElevatorAscendCmd());
 		buttons[6].whileHeld(new ElevatorDescendCmd());

@@ -13,12 +13,12 @@ public class DriveDistCmd extends Command {
 	/**
 	 * driveSpeed is the speed that the robot drives at when it is going straight 
 	 */
-	private double driveSpeed = 0.5;
+	private double driveSpeed = 0.75;
 	/**
 	 * The speed of the wheels that you want to be slower when turning while moving forward.
 	 * Set to left side if turning right, set to right side if turning left.
 	 */
-	private double turnSpeed = 0.2;
+	private double turnSpeed = 0.4;
 	/**
 	 * targetDistance is how far the robot should travel
 	 */

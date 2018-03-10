@@ -22,6 +22,7 @@ public class AutoGripperPushCmd extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	DriverStation.reportWarning("Boutta eject", false);
     	timer.reset();
     	timer.start();
     	
@@ -30,7 +31,7 @@ public class AutoGripperPushCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	
+    	DriverStation.reportWarning("Ejecting Now!!!!!", false);
     		Robot.gi.push();
    
     }
