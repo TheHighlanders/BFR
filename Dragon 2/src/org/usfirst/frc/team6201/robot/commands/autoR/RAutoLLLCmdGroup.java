@@ -5,6 +5,7 @@ import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMaxCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.SmallLiftCmd;
 import org.usfirst.frc.team6201.robot.commands.TurnAngleCmd;
@@ -19,24 +20,26 @@ public class RAutoLLLCmdGroup extends CommandGroup {
 
     public RAutoLLLCmdGroup() {
     	
+    
+    	
     	DriverStation.reportWarning("R-Autonomous Procedure LLL initiated.", false);
     	addSequential(new SmallLiftCmd());
-    	addParallel(new ElevatorConstantForceCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
-    	addSequential(new DriveDistCmd(288, 6));
-    	DriverStation.reportWarning("24 feet driven, Stage 1 complete.", false);
+    	addParallel(new ElevatorConstantForceCmd());
+    	addSequential(new DriveDistCmd(220, 6));
+    	DriverStation.reportWarning("Went past the switch, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(-90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(12, 12));
-    	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
-    	addSequential(new ElevatorMaxCmd());
+    	addSequential(new DriveDistCmd(250, 12));
+    	DriverStation.reportWarning("Reached opposite side, Stage 3 complete.", false);
+    	
+    	addSequential(new TurnAngleCmd(90, 10));
+    	DriverStation.reportWarning("Robot turned #2, Stage 4 complete.", false);
+    	addSequential(new ElevatorTopScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
     	DriverStation.reportWarning("R-Autonomous Procedure LLL complete.", false);
-    	
-    	
-    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -3,6 +3,7 @@ package org.usfirst.frc.team6201.robot.commands.autoR;
 import org.usfirst.frc.team6201.robot.commands.AutoGripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorMaxCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.SmallLiftCmd;
@@ -18,20 +19,18 @@ public class RAutoRRRCmdGroup extends CommandGroup {
 
     public RAutoRRRCmdGroup() {
     	
+    	
     	DriverStation.reportWarning("R-Autonomous Procedure RRR initiated.", false);
     	addSequential(new SmallLiftCmd());
-    	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new DriveDistCmd(220, 6));
-    	DriverStation.reportWarning("Went past the switch, Stage 1 complete.", false);
+    	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
+    	addSequential(new DriveDistCmd(288, 6));
+    	DriverStation.reportWarning("24 feet driven, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(-90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(250, 12));
-    	DriverStation.reportWarning("Reached opposite side, Stage 3 complete.", false);
-    	
-    	addSequential(new TurnAngleCmd(90, 10));
-    	DriverStation.reportWarning("Robot turned #2, Stage 4 complete.", false);
-    	addSequential(new ElevatorTopScaleCmd());
+    	addSequential(new DriveDistCmd(12, 12));
+    	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
+    	addSequential(new ElevatorMaxCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
