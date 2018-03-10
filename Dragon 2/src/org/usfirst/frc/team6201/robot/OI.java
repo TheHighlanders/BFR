@@ -7,15 +7,14 @@
 
 package org.usfirst.frc.team6201.robot;
 
-import org.usfirst.frc.team6201.robot.commands.ClimbCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
+import org.usfirst.frc.team6201.robot.commands.ElevatorMaxCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
-import org.usfirst.frc.team6201.robot.commands.ElevatorTopScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoRLRCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -39,7 +38,8 @@ public class OI {
 	 */
 	private Joystick logitech = new Joystick(RobotMap.LOGITECH);
 	
-	public Button[] buttons = new Button[13];
+	public Button[] joystickButtons = new Button[13];
+	public Button[] xboxButtons = new Button[7]; 
 	
 	private XboxController xbox = new XboxController(RobotMap.XBOX);
 	
@@ -109,34 +109,35 @@ public class OI {
 	
 	public OI() {
 		
-		for(int i = 1; i < buttons.length; i++) {
+		for(int i = 1; i < joystickButtons.length; i++) {
 			
-			buttons[i] = new JoystickButton(logitech, i);
+			joystickButtons[i] = new JoystickButton(logitech, i);
 			
 		}
 		
-		buttons[2].whileHeld(new ClimbCmd());
-	
-		buttons[7].whenPressed(new ElevatorTopScaleCmd());
-		buttons[9].whenPressed(new ElevatorMidScaleCmd());
-		//buttons[11].whenPressed(new ElevatorLowScaleCmd());
-		buttons[11].whenPressed(new AutoRLRCmdGroup());
-		//buttons[11].whenPressed(new DriveDistCmd(12*12,12));
-		buttons[12].whenPressed(new ElevatorDescendCmd());
-		//buttons[11].whenPressed(new ElevatorBottomCmd());
+		for(int i = 1; i < xboxButtons.length; i++) {
+			
+			xboxButtons[i] = new JoystickButton(xbox, i);
+			
+		}
 		
-		buttons[5].whileHeld(new ElevatorAscendCmd());
-		buttons[6].whileHeld(new ElevatorDescendCmd());
+		joystickButtons[7].whenPressed(new ElevatorMaxCmd());
+		joystickButtons[9].whenPressed(new ElevatorMidScaleCmd());
+		joystickButtons[11].whenPressed(new ElevatorLowScaleCmd());
 		
-		buttons[3].whileHeld(new GripperPullCmd());
-		buttons[4].whileHeld(new GripperPushCmd());
+		joystickButtons[5].whileHeld(new ElevatorAscendCmd());
+		joystickButtons[6].whileHeld(new ElevatorDescendCmd());
 		
-		lb.whenPressed(new ElevatorLowScaleCmd());
+		joystickButtons[3].whileHeld(new GripperPullCmd());
+		joystickButtons[4].whileHeld(new GripperPushCmd());
 		
-		rb.whenPressed(new ElevatorTopScaleCmd());
+		xboxButtons[1].whenPressed(new ElevatorLowScaleCmd());
+		xboxButtons[2].whenPressed(new ElevatorMidScaleCmd());
+		xboxButtons[3].whenPressed(new ElevatorBottomCmd());
+		xboxButtons[4].whenPressed(new ElevatorMaxCmd());
 		
-		bpress.whenPressed(new ElevatorMidScaleCmd());
-		
+		xboxButtons[5].whenPressed(new GripperPullCmd());
+		xboxButtons[6].whenPressed(new GripperPushCmd());
 		
 	}
 

@@ -34,7 +34,7 @@ public class GripperPushCmd extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	return !Robot.oi.buttons[4].get();
+    	return !Robot.oi.joystickButtons[4].get();
     
     }
 
