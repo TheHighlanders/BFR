@@ -8,13 +8,14 @@
 package org.usfirst.frc.team6201.robot;
 
 import org.usfirst.frc.team6201.robot.commands.ElevatorAscendCmd;
-import org.usfirst.frc.team6201.robot.commands.ElevatorBottomCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorDescendCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorLowScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMaxCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
+import org.usfirst.frc.team6201.robot.commands.SmallLiftCmd;
+import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRLRCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -42,11 +43,6 @@ public class OI {
 	public Button[] xboxButtons = new Button[7]; 
 	
 	private XboxController xbox = new XboxController(RobotMap.XBOX);
-	
-	private Button lb = new JoystickButton(xbox,5);
-	private Button rb = new JoystickButton(xbox, 6);
-	private Button bpress = new JoystickButton(xbox,10);
-	private Button y = new JoystickButton(xbox,4);
 	
 	/**
 	 * @return  a double corresponding to how much the joystick's handle is rotated.
@@ -89,24 +85,6 @@ public class OI {
 		
 	}
 	
-	
-	//X Box buttons
-		public boolean getButtonlb() {
-			return lb.get();
-		}
-		
-		public boolean getButtonrb() {
-			return rb.get();
-		}
-		
-		public boolean getButtonbpress() {
-			return bpress.get();
-		}
-		
-		public boolean getButtony() {
-			return y.get();
-		}
-	
 	public OI() {
 		
 		for(int i = 1; i < joystickButtons.length; i++) {
@@ -121,6 +99,8 @@ public class OI {
 			
 		}
 		
+		joystickButtons[2].whenPressed(new RAutoRLRCmdGroup());
+		
 		joystickButtons[7].whenPressed(new ElevatorMaxCmd());
 		joystickButtons[9].whenPressed(new ElevatorMidScaleCmd());
 		joystickButtons[11].whenPressed(new ElevatorLowScaleCmd());
@@ -130,14 +110,16 @@ public class OI {
 		
 		joystickButtons[3].whileHeld(new GripperPullCmd());
 		joystickButtons[4].whileHeld(new GripperPushCmd());
-		
+		/*
 		xboxButtons[1].whenPressed(new ElevatorLowScaleCmd());
 		xboxButtons[2].whenPressed(new ElevatorMidScaleCmd());
 		xboxButtons[3].whenPressed(new ElevatorBottomCmd());
 		xboxButtons[4].whenPressed(new ElevatorMaxCmd());
+		*/
 		
-		xboxButtons[5].whenPressed(new GripperPullCmd());
-		xboxButtons[6].whenPressed(new GripperPushCmd());
+		//xboxButtons[2].toggleWhenPressed(new ElevatorConstantForceCmd());
+		xboxButtons[5].whileHeld(new ElevatorAscendCmd());
+		xboxButtons[6].whileHeld(new ElevatorDescendCmd());
 		
 	}
 

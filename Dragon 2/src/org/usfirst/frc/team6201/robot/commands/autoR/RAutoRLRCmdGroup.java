@@ -17,15 +17,14 @@ public class RAutoRLRCmdGroup extends CommandGroup {
 
     public RAutoRLRCmdGroup() {
     	
-    	DriverStation.reportWarning("R-Autonomous Procedure RLR initiated.", false);
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new DriveDistCmd(140, 6));
+    	addSequential(new DriveDistCmd(128, 6, 0.65));
     	DriverStation.reportWarning("Reached switch, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(-90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(36, 12));
+    	addSequential(new DriveDistCmd(36, 12, 0.65));
     	DriverStation.reportWarning("24 inches driven, Stage 3 complete.", false);
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
     	addSequential(new AutoGripperPushCmd());

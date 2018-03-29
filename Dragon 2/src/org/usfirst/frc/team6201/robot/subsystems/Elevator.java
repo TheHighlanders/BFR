@@ -129,8 +129,8 @@ public class Elevator extends Subsystem {
     
     public void constantForce() {
     	
-    	elevator1.set(-0.2);
-    	elevator2.set(0.2);
+    	elevator1.set(-0.1);
+    	elevator2.set(0.1);
     	
     }
     

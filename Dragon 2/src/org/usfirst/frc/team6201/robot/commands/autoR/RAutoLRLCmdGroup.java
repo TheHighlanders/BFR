@@ -19,23 +19,32 @@ public class RAutoLRLCmdGroup extends CommandGroup {
 
     public RAutoLRLCmdGroup() {
     	
-    	
+    	/*
     	DriverStation.reportWarning("R-Autonomous Procedure LRL initiated.", false);
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new DriveDistCmd(24*12, 6));
+    	addSequential(new DriveDistCmd(22*12, 6, 0.55));
     	DriverStation.reportWarning("14 feet driven, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(-90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(12, 12));
+    	//addSequential(new DriveDistCmd(12, 12));
     	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
     	addSequential(new ElevatorMidScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
     	DriverStation.reportWarning("R-Autonomous Procedure LRL complete.", false);
+    	*/
+    	
+    	addSequential(new SmallLiftCmd());
+    	addParallel(new ElevatorConstantForceCmd());
+    	addSequential(new DriveDistCmd(22*12, 6, 0.55));
+    	addSequential(new TurnAngleCmd(-90, 10));
+    	addSequential(new ElevatorMidScaleCmd());
+    	addSequential(new AutoGripperPushCmd());
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

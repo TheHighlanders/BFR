@@ -21,11 +21,11 @@ public class AutoRLRCmdGroup extends CommandGroup {
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new DriveDistCmd(24*12, 6));
+    	addSequential(new DriveDistCmd(22*12, 6, 0.55));
     	DriverStation.reportWarning("14 feet driven, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(12, 12));
+    	//addSequential(new DriveDistCmd(12, 12));
     	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
     	addSequential(new ElevatorMidScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);

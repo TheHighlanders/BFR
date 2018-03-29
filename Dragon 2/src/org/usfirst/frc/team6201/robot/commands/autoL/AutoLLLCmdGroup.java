@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6201.robot.commands.autoL;
 
+import org.usfirst.frc.team6201.robot.Robot;
 import org.usfirst.frc.team6201.robot.commands.AutoGripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.DriveDistCmd;
 import org.usfirst.frc.team6201.robot.commands.ElevatorConstantForceCmd;
@@ -18,7 +19,7 @@ public class AutoLLLCmdGroup extends CommandGroup {
 
     public AutoLLLCmdGroup() {
     	
-    	DriverStation.reportWarning("Autonomous Procedure LLL initiated.", false);
+    	/*DriverStation.reportWarning("Autonomous Procedure LLL initiated.", false);
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
@@ -26,15 +27,29 @@ public class AutoLLLCmdGroup extends CommandGroup {
     	DriverStation.reportWarning("24 feet driven, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(12, 12));
+    	//addSequential(new DriveDistCmd(12, 12));
     	DriverStation.reportWarning("12 inches driven, Stage 3 complete.", false);
     	addSequential(new ElevatorMidScaleCmd());
     	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
     	DriverStation.reportWarning("Autonomous Procedure LLL complete.", false);
+    	*/
+    	DriverStation.reportWarning("Autonomous Procedure LRL initiated.", false);
+    	addSequential(new SmallLiftCmd());
     	
+    	addParallel(new ElevatorConstantForceCmd());
+    	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
+    	addSequential(new DriveDistCmd(140, 6, 0.65));
+    	DriverStation.reportWarning("Reached switch, Stage 1 complete.", false);
+    	addSequential(new TurnAngleCmd(90, 10));
+    	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
+    	addSequential(new DriveDistCmd(36, 12, 0.65));
+    	DriverStation.reportWarning("24 inches driven, Stage 3 complete.", false);
     	
+    	addSequential(new AutoGripperPushCmd());
+    	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
+    	DriverStation.reportWarning("Autonomous Procedure RLR complete.", false);
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

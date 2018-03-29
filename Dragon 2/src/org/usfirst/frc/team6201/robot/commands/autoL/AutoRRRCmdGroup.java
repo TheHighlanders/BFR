@@ -19,26 +19,27 @@ public class AutoRRRCmdGroup extends CommandGroup {
 
     public AutoRRRCmdGroup() {
     	
-    	DriverStation.reportWarning("Autonomous Procedure RRR initiated.", false);
+    	
+
+    	DriverStation.reportWarning("R-Autonomous Procedure LLL initiated.", false);
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
     	addParallel(new ElevatorConstantForceCmd());
-    	addSequential(new DriveDistCmd(220, 6));
+    	addSequential(new DriveDistCmd(190, 6, 0.6));
     	DriverStation.reportWarning("Went past the switch, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(250, 12));
+    	addSequential(new DriveDistCmd(160, 12, 0.6));
     	DriverStation.reportWarning("Reached opposite side, Stage 3 complete.", false);
     	
-    	addSequential(new TurnAngleCmd(-90, 10));
+    	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned #2, Stage 4 complete.", false);
-    	addSequential(new ElevatorMidScaleCmd());
-    	DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
-
+    	//addSequential(new ElevatorTopScaleCmd());
+    	//DriverStation.reportWarning("Elevator ascension achieved, Stage 4 complete." , false);
+    	addSequential(new DriveDistCmd(30, 6, 0.6));
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 5 complete.", false);
-    	DriverStation.reportWarning("Autonomous Procedure RRR complete.", false);
-    	
+    	DriverStation.reportWarning("R-Autonomous Procedure LLL complete.", false);
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

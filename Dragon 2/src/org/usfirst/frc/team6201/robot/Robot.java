@@ -122,7 +122,8 @@ public class Robot extends IterativeRobot {
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		//gameData = SmartDashboard.getString("Auto", "D");
-		startingPos = (char) autoChooser.getSelected();
+		//startingPos = (char) autoChooser.getSelected();
+		startingPos = 'L';
 		// Checks for every possible arrangement
 		// Put desired command group in each case
 		//DriverStation.reportWarning("GameData is :" + gameData, false);

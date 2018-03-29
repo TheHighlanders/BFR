@@ -13,7 +13,7 @@ public class DriveDistCmd extends Command {
 	/**
 	 * driveSpeed is the speed that the robot drives at when it is going straight 
 	 */
-	private double driveSpeed = 0.75;
+	private double driveSpeed;
 	/**
 	 * The speed of the wheels that you want to be slower when turning while moving forward.
 	 * Set to left side if turning right, set to right side if turning left.
@@ -51,12 +51,13 @@ public class DriveDistCmd extends Command {
 	 * @param targetDist			Degrees to turn the robot (pos = clockwise, neg = counterclockwise)
 	 * @param acceptedDistOffset	The allowable error between goal and final position of the Robot
 	 */
-	public DriveDistCmd(double targetDist, double acceptedDistOffset) {
+	public DriveDistCmd(double targetDist, double acceptedDistOffset, double speed) {
 	
 		requires(Robot.dt);
 		
 		this.targetDistance = targetDist;
 		this.acceptedDistanceOffset = acceptedDistOffset;
+		this.driveSpeed = speed;
 	
 	}
 	

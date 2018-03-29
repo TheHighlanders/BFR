@@ -23,11 +23,11 @@ public class AutoLRLCmdGroup extends CommandGroup {
     	
     	addParallel(new ElevatorConstantForceCmd());
     	DriverStation.reportWarning("Pre-addSequential() message #2.", false);
-    	addSequential(new DriveDistCmd(140, 6));
+    	addSequential(new DriveDistCmd(140, 6, 0.65));
     	DriverStation.reportWarning("Reached switch, Stage 1 complete.", false);
     	addSequential(new TurnAngleCmd(90, 10));
     	DriverStation.reportWarning("Robot turned, Stage 2 complete.", false);
-    	addSequential(new DriveDistCmd(36, 12));
+    	addSequential(new DriveDistCmd(36, 12, 0.65));
     	DriverStation.reportWarning("24 inches driven, Stage 3 complete.", false);
     	
     	addSequential(new AutoGripperPushCmd());
