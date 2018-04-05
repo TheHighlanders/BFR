@@ -7,14 +7,16 @@
 
 package org.usfirst.frc.team6201.robot;
 
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoLLLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoLRLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoRLRCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoL.AutoRRRCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoR.RAutoLLLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoR.RAutoLRLCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRLRCmdGroup;
-import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRRRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.centre.CAutoLeftCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.centre.CAutoRightCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.left.LAutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.left.LAutoLRLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.left.LAutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.left.LAutoRRRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.right.RAutoLLLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.right.RAutoLRLCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.right.RAutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.right.RAutoRRRCmdGroup;
 import org.usfirst.frc.team6201.robot.subsystems.Climber;
 import org.usfirst.frc.team6201.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6201.robot.subsystems.Elevator;
@@ -130,40 +132,45 @@ public class Robot extends IterativeRobot {
 		if(gameData.length() > 0) {
 			
 			if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L') {
-				DriverStation.reportWarning("About to choose LLL", false);
 				if(startingPos == 'L'){
-					autonomousCommand = new AutoLLLCmdGroup();
+					autonomousCommand = new LAutoLLLCmdGroup();
 				}
 				else if(startingPos == 'R'){
 					autonomousCommand = new RAutoLLLCmdGroup();
+				} else if(startingPos == 'C') {
+					autonomousCommand = new CAutoLeftCmdGroup();
 				}
-				
 			} else if(gameData.charAt(0) == 'L' && gameData.charAt(1) == 'R') {
 				if(startingPos == 'L'){
-					autonomousCommand = new AutoLRLCmdGroup();
+					autonomousCommand = new LAutoLRLCmdGroup();
 				}
 				else if(startingPos == 'R'){
 					autonomousCommand = new RAutoLRLCmdGroup();
+				} else if(startingPos == 'C') {
+					autonomousCommand = new CAutoLeftCmdGroup();
 				}
 				
 			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'L') {
 				if(startingPos == 'L'){
-					autonomousCommand = new AutoRLRCmdGroup();
+					autonomousCommand = new LAutoRLRCmdGroup();
 				}
 				else if(startingPos == 'R'){
 					autonomousCommand = new RAutoRLRCmdGroup();
+				} else if(startingPos == 'C') {
+					autonomousCommand = new CAutoRightCmdGroup();
 				}
 				
 			} else if(gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R') {
 				if(startingPos == 'L'){
-					autonomousCommand = new AutoRRRCmdGroup();
+					autonomousCommand = new LAutoRRRCmdGroup();
 				}
 				else if(startingPos == 'R'){
 					autonomousCommand = new RAutoRRRCmdGroup();
+				} else if(startingPos == 'C') {
+					autonomousCommand = new CAutoRightCmdGroup();
 				}
 				
-			} 
-
+			}
 			
 		}
 

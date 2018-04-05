@@ -15,7 +15,7 @@ import org.usfirst.frc.team6201.robot.commands.ElevatorMidScaleCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPullCmd;
 import org.usfirst.frc.team6201.robot.commands.GripperPushCmd;
 import org.usfirst.frc.team6201.robot.commands.SmallLiftCmd;
-import org.usfirst.frc.team6201.robot.commands.autoR.RAutoRLRCmdGroup;
+import org.usfirst.frc.team6201.robot.commands.auto.right.RAutoRLRCmdGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
