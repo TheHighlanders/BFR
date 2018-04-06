@@ -17,7 +17,7 @@ public class CAutoLeftCmdGroup extends CommandGroup {
 
     public CAutoLeftCmdGroup() {
         
-    	DriverStation.reportWarning("C-Autonomous Procedure LLL initiated.", false);
+    	DriverStation.reportWarning("C-Autonomous Procedure LEFT initiated.", false);
     	addSequential(new SmallLiftCmd());
     	DriverStation.reportWarning("Initial elevator ascensions achieved, Stage 1 complete.", false);
     	addSequential(new ElevatorConstantForceCmd());
@@ -33,7 +33,7 @@ public class CAutoLeftCmdGroup extends CommandGroup {
     	DriverStation.reportWarning("Reached switch, Stage 6 complete.", false);
     	addSequential(new AutoGripperPushCmd());
     	DriverStation.reportWarning("Cube ejected, Stage 7 complete.", false);
-    	DriverStation.reportWarning("C-Autonomous Procedure LLL complete.", false);
+    	DriverStation.reportWarning("C-Autonomous Procedure LEFT complete.", false);
     	
     }
 }
